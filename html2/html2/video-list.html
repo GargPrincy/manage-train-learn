@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <title>Video List</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 my-auto">
+            <div class="top-logo zoomInDown" id="logo">
+              <img src="assets/images/logo.png" alt="logo">
+            </div>
+          </div>
+          <div class="col-lg-9  col-md-8">
+            <div class="header-categories bounceInLeft">
+              <form class="search-in" action="">
+                <input type="text" placeholder="Search Snippizz for videos" name="search">
+                <button type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+            <div class="header-search bounceInLeft">
+              <div class="category">
+                <div class="select" tabindex="1">
+                  Category
+                </div>
+              </div>
+            </div>
+            <div class="right-user-id bounceInLeft">
+              <div class="top-user-btn" id="userId">
+                <div class="user_icon">
+                  <img src="assets/images/user_icon.png" width="50px" alt="user icon">
+                </div>
+                <div class="user_name">Ashutosh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="middle-part video-list">
+      <div class="container">
+        <div class="row ">
+            <div class="col-md-8">
+                    <h2 class="zoomInDown">Today's Top 20 Videos</h2>
+            </div>
+            <div class="col-md-4 zoomInDown">
+                <div class="border-box" ><a href="#">View All (12)</a> </div>
+                <div class="border-box" ><a href="#">Sort</a> </div>  
+            </div>
+        </div>
+
+        <div class="row">
+           <div class="col-md-12 product-video-box zoomInDown"  id="galleries-list">
+               <span class="slide-left"> <img src="assets/images/arrow-left.png" width="59px" alt="arrow-left arrow-a">  </span>
+              <div class="list-a1" id="galleries-list">
+              <ul>
+                 <li>
+                <div class="thumbnail-box"> <img src="assets/images/video-thumbnail.png" width="100%" alt="product-img"> </div> 
+                <div class="thumbnail-title"> Designing a Sales Force </div>
+                <div class="sub-title-1"> Marketing 119 </div>
+                <div class="sub-title-2">222K views </div>
+               </li>
+                  <li>
+                    <div class="thumbnail-box"> <img src="assets/images/video-thumbnail.png" width="100%" alt="product-img"> </div> 
+                    <div class="thumbnail-title"> Designing a Sales Force </div>
+                    <div class="sub-title-1"> Marketing 119 </div>
+                    <div class="sub-title-2">222K views </div>
+                  </li>
+                  <li>
+                    <div class="thumbnail-box"> <img src="assets/images/video-thumbnail.png" width="100%" alt="product-img"> </div> 
+                    <div class="thumbnail-title"> Designing a Sales Force </div>
+                    <div class="sub-title-1"> Marketing 119 </div>
+                    <div class="sub-title-2">222K views </div>
+                  </li>
+                  <li>
+                    <div class="thumbnail-box"> <img src="assets/images/video-thumbnail.png" width="100%" alt="product-img"> </div> 
+                    <div class="thumbnail-title"> Designing a Sales Force </div>
+                    <div class="sub-title-1"> Marketing 119 </div>
+                    <div class="sub-title-2">222K views </div>
+                  </li>
+              </ul>
+                 
+            </div>
+            
+                  <span class="slide-right"><img src="assets/images/arrow-right.png" width="59px" alt="arrow-right arrow-a"> </span>
+          
+           </div>
+       </div>
+
+
+
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="footer-inner-text zoomInUp"> At KSA Training Ltd, we have a simple mission: "To make e-learning free, fun, and inspirational". </br> We are: MTL for slides; Snippizz for videos; Kwizzers for games; The Soft Skills Quiz for quizzes; Build-a-Course for online courses; Biznizbooks for e-books </br> Copyright KSA Training Ltd 2022 </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<script>
+
+numberElements = 4;
+numberViewed = 4;
+currentPosition = 1;
+
+function countLi() {
+    return jQuery("#galleries-list ul li").length;
+};
+
+function slideRight() {
+    if (countLi() > numberViewed)
+        if (currentPosition == (countLi() - (numberViewed - 1))) {
+            jQuery("#galleries-list ul li").css("visibility","hidden").css("transition", "none");
+            setSliderPosition(numberViewed + 1, countLi());
+            jQuery("#galleries-list ul li").css("transition", "left .75s ease-out").css("visibility","visible");
+            setSliderPosition(currentPosition + 1, countLi());
+            return;
+        } else return setSliderPosition(currentPosition + 1, countLi());
+};
+
+function slideLeft() {
+    if (countLi() > numberViewed)
+        if (currentPosition == 1) {
+            jQuery("#galleries-list ul li").css("transition", "none");
+            setSliderPosition(countLi() - (2 * numberViewed + 1), countLi()).css("transition", "left .75s ease-out");
+            return setSliderPosition(currentPosition - 1, countLi());
+        } else return setSliderPosition(currentPosition - 1, countLi());
+};
+
+function setSliderPosition(n1, count) {
+    if (n1 < 1) {
+        setSliderPosition((count - (numberViewed - 1)) + n1, count);
+        return
+    };
+    n1 = (n1 - 1) % (count - (numberViewed - 1)) + 1;
+    currentPosition = n1;
+    return jQuery("#galleries-list ul li").css('left', function() {
+        return -(n1 - 1) * jQuery("#galleries-list ul li").width();
+    });
+};
+
+function initWidths() {
+    jQuery("#galleries-list ul li").css('width', (100 / countLi()) + '%');
+    jQuery("#galleries-list ul").css('width', (100 + (countLi() - numberViewed) * (100 / numberViewed)) + '%');
+};
+
+function initClones() {
+    if (countLi() >= numberViewed) {
+        for (i = 1; i < numberViewed + 1; i++) {
+            jQuery("#galleries-list ul li:nth-child(" + i + ")").clone().insertAfter("#galleries-list ul li:last-child");
+        }
+        c = countLi();
+        for (i = c - numberViewed + 1; i <= c; i++) {
+            console.log(i);
+            jQuery("#galleries-list ul li:nth-last-child(" + i + ")").clone().insertBefore("#galleries-list ul li:first-child");
+        }
+    }
+};
+
+function initSlider() {
+    initClones();
+    initResponsive();
+    initWidths();
+};
+
+function initPosition() {
+    setSliderPosition(currentPosition, countLi());
+};
+
+function initResponsive() {
+    if (jQuery(window).width() > 1000) {
+        if (numberViewed != 4) {
+            numberViewed = 4;
+            initWidths();
+        }
+    } else if (jQuery(window).width() > 800) {
+        if (numberViewed != 3) {
+            numberViewed = 3;
+            initWidths();
+        }
+    } else if (jQuery(window).width() > 600) {
+        if (numberViewed != 2) {
+            numberViewed = 2;
+            initWidths();
+        }
+    } else if (numberViewed != 1) {
+        numberViewed = 1;
+        initWidths();
+    };
+    initPosition();
+};
+jQuery(document).ready(function() {
+    initSlider();
+    jQuery(window).resize(initResponsive);
+    jQuery("#galleries-list .slide-left").click(slideLeft);
+    jQuery("#galleries-list .slide-right").click(slideRight);
+});
+
+
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
