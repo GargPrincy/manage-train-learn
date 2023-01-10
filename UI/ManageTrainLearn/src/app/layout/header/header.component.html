@@ -1,0 +1,72 @@
+<header>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 my-auto">
+          <div class="top-logo zoomInDown" id="logo">
+            <a href="" (click)="onGoToPage2()"><img src="assets/images/logo.png" alt="logo"></a>           
+          </div>
+        </div>
+        <div class="col-lg-9  col-md-8">
+          <div class="header-categories bounceInLeft">        
+              <form  class="search-in" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+              <input type="text" placeholder="Search MTL for slides" name="search" formControlName="searchKey">
+              <button type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+          <div class="header-search bounceInLeft">
+            <div class="category">
+              
+              <a href="" (click)="onGoToPage2()">
+              <div class="select" >
+                Categories
+               
+                
+              </div>
+            </a>
+            </div>
+          </div>
+          <div class="right-user-id bounceInLeft">
+            <div class="top-user-btn" id="userId">
+              <a href="" data-bs-toggle="modal" data-bs-target="#raund-modal" >
+              <div class="user_icon">
+                <img src="assets/images/user_icon.png" width="50px" alt="user icon">
+              </div>
+              <div class="user_name">  {{showGuestUserName}}</div>
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal raund-modal" id="raund-modal" >
+      
+      <div class="modal-dialog">
+        <div class="modal-content">
+                     <img data-bs-dismiss="modal" style="display: none;" class="btn-close popup-close" 
+                     id="popup-close" src="assets/images/close-btn.png"  (click)="hidePopup()" width="40px" alt="close">
+          <div class="modal-body modal-inner-box">
+              <div class="model-content">
+              <h3>Guest user name</h3>
+              <div class="ineer-popup-close-btn">
+                <form [formGroup]="myForm" (ngSubmit)="userFormSubmit(myForm)">
+                  <div>
+                      <input class="popup-input" formControlName="name" placeholder="Enter your name here">
+                    <div class="errors-1" 
+                    *ngIf="(myFormControl['name'].touched || submitted) && myFormControl['name'].errors && myFormControl['name'].errors['required']">Name is required.</div>
+                    <div  class="errors-1"
+                     *ngIf="(myFormControl['name'].touched || submitted) && myFormControl['name'].errors && myFormControl['name'].errors['minlength']">Please enter atleast 3 characters.
+                    </div>
+                    <div  class="errors-1" *ngIf="(myFormControl['name'].touched || submitted) && myFormControl['name'].errors && myFormControl['name'].errors['pattern']">Please enter valid name.</div>
+                  </div>
+                  <button class="btn btn-popup-box" type="submit">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </header>
