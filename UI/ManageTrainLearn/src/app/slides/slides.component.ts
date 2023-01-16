@@ -22,6 +22,9 @@ export class SlideComponent {
   page: number = 1;
   totalPages: number = 0;
   isLoaded: boolean = false;
+  public downCount: number = 0;
+  limitDown: number = 9;
+  public downloadCountID:number = 0;
 
   constructor(    
       private activatedRoute: ActivatedRoute,
@@ -73,7 +76,7 @@ export class SlideComponent {
       // alert(copyText.value)
       navigator.clipboard.writeText(copyText.value);
     }
-    
+
     // public missingSlideReport(slideId:any){
     //    console.log(slideId,"div id");   
     //   this._slideListingService.reportSlideMissing(slideId).subscribe(
@@ -97,16 +100,18 @@ export class SlideComponent {
       this._slideListingService.getSlideRecord(slideId).subscribe(
         response => {
         
-              this.slideData = response[0];
+              this.slideData = response;
               console.log('sssssssssssssssssssssss-ddddddddd', this.slideData)
-             
+
+              this.downCount = this.slideData.today_download_count;
+
+              console.log(this.downCount, 'dowen-count')
 
               this.titleService.setTitle(this.slideData.title.toUpperCase());
 
               //this.videoEmbed =this.slideData.url;
               // this.videoId = this.youtube_parser(this.videoData.url);
-              console.log(this.slideData.url, 'hhhhhhhhhhhh')
-              console.log(typeof this.slideData.url, 'uuu');
+              console.log(this.slideData.url, 'hhhh-url')
 
               
               // this.slideId = this.slideData.url;
@@ -139,15 +144,22 @@ export class SlideComponent {
     }
   downloadSlide(slideId:number) {
     console.log("get data",slideId)
-  
+    console.log("get downloadCount",this.downCount)
+    
        console.log("get data")
-        if(this.slideCliecked == 2){
+        if(this.slideCliecked == 2 && this.downCount <= 9){
           this._slideListingService.updateSlideDownloadCount(slideId).subscribe(
             response => {  
               console.log('afterrrrrrrrrrrrrrr-clieckk', response);
               
               FileSaver.saveAs(this.slideData.url, this.slideData.slug);
               this.slideData.download_count = parseInt(this.slideData.download_count)+1;
+              this.getData(slideId);
+              console.log(this.limitDown, 'limit-doen')
+              this.downloadCountID = this.limitDown - this.downCount ;
+              
+              console.log('wwwww', this.downloadCountID);
+
               // alert('hi')
               this.slideCliecked = 1;
             });
