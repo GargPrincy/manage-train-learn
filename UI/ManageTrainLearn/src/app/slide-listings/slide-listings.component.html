@@ -1,0 +1,166 @@
+<section class="middle-part video-list">
+  <span class="loader" *ngIf="loading"></span>
+ 
+  <div class="container">
+    <div class="row">
+      <div *ngIf="topicKeyword && categoriesAllData.data.length && showData && !loading">
+        <h2 class="top-cat">{{categoriesAllData.data[0].category}}</h2>
+      </div>
+      <div class="col-md-7">
+                <h2 class="sub-menu">{{showKeyword}}</h2>
+      </div>
+      <div class="col-md-5">
+            <div class="border-box">
+              <a  target="_self" style="cursor: pointer;"  (click)="slideAll()" >View All ({{totalCount}})</a> </div>
+              <form [formGroup]="form" *ngIf="categoriesAllData.data.length && showData && !loading">
+             <div class="border-box" >
+              <select name="languages" id="lang" (change)="onChanges($event)">
+                <option value="">Sort</option>
+                <option value="viewss">Sort(by downloads)</option>
+                <option value="atoz">Sort(A-Z title)</option>
+              </select>
+           </div>
+          </form>
+           <!-- 
+            <div class="border-box" *ngIf="categoriesAllData.length && showData && !loading"><a  target="_self" (click)="videoSortAlpha()">AlphaSort</a> </div>   -->
+      </div>
+    </div>
+    <!-- <button id="show" data-theme="b">
+      Default loader
+    </button> -->
+    <!-- {{categoriesAllData.data | json}} -->
+    <div class="row">
+       <div class="col-md-12 product-video-box"  id="galleries-list">
+        
+        
+              <!-- <ng-image-slider [images]="imageObject" 
+                    [imagePopup]="false"
+                  [infinite]="false"
+                  [autoSlide]="1"
+               [imageSize]="{width: '25%', height: 230}" #nav></ng-image-slider> -->
+
+      
+          
+ 
+       <div class="col-md-12" *ngIf="categoriesAllData.data.length && showData">
+        <div class="wrapper">
+    
+       <owl-carousel-o [options]="customOptions" *ngIf="categoriesAllData.data.length > 4">
+        <ng-container class="col-md-3" *ngFor="let slide of categoriesAllData.data">
+          <ng-template class="slide" carouselSlide [id]="slide.id">
+              <a   href=""  routerLink="/slide/{{slide.id}}">
+              <div class="thumbnail-box"> <img  style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px" width="100%"  alt="product-img">
+              </div> 
+              <div class="thumbnail-title"> {{slide.title | uppercase}}</div>
+
+            </a>
+            <div class="sub-title-1"> {{slide.producer | uppercase}}</div>
+            <div class="sub-title-2">{{slide.slide_count}} slides <span> {{slide.download_count}} downloads</span></div>
+    
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o> 
+      <div class="row" *ngIf="categoriesAllData.data.length <= 4">
+  
+        <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+          <a   href=""  routerLink="/slide/{{slide.id}}">
+          <div class="thumbnail-box"> <img  style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px" width="100%" alt="product-img">
+          </div> 
+          <div class="thumbnail-title"> {{slide.title | uppercase}}</div>
+
+        </a> 
+        <div class="sub-title-1"> {{slide.producer | uppercase}}</div>
+        <div class="sub-title-2">{{slide.slide_count}} slides <span> {{slide.download_count}} downloads</span></div> 
+      </div>
+      </div>  
+       </div>
+   </div>
+   
+
+   <div class="col-md-12"  *ngIf="categoriesAllData.data.length == 0 && !loading">
+    <h3 class="error-msg">No matching records found</h3>
+   </div>
+  </div>
+
+   </div>
+  </div>
+   
+  </section>
+
+  <style>
+      
+  
+.owl-nav button {
+  position: absolute;
+  top: 50%;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+.owl-nav button.owl-prev {
+  left: 0;
+}
+.owl-nav button.owl-next {
+  right: 0;
+}
+
+.owl-dots {
+  text-align: center;
+  padding-top: 15px;
+}
+.owl-dots button.owl-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ccc;
+  margin: 0 3px;
+}
+.owl-dots button.owl-dot.active {
+  background-color: #000;
+}
+.owl-dots button.owl-dot:focus {
+  outline: none;
+}
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.38) !important;
+}
+.owl-nav span {
+    font-size: 70px;    
+    position: relative;
+    top: -5px;
+}
+.owl-nav button:focus {
+    outline: none;
+}
+
+.owl-dots{ display:none;}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot
+{ background:inherit!important;}
+
+.owl-nav .owl-prev span {
+  margin-left: -75px!important;
+  /* background-image: url(https://course.24livehost.com/build/assets/images/arrow-left.png); */
+  font-size: 1px;
+  width: 59px;
+  height: 121px;
+  float: left;
+}
+
+
+.owl-nav .owl-next span {
+  margin-right: -90px!important;
+  /* background-image: url(https://course.24livehost.com/build/assets/images/arrow-right.png); */
+  font-size: 1px;
+  width: 59px;
+  height: 121px;
+  float: left;
+margin-left: 15px;
+}
+
+.owl-carousel.owl-drag .owl-item .item{ padding:10px;}
+  </style>

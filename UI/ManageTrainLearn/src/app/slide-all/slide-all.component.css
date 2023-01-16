@@ -1,0 +1,15 @@
+.thumbnail-title a{color:white}
+.thumbnail-titless a{color:white;text-decoration:none;}
+a{color:white;text-decoration:none;}
+.thumbnail-title {
+    width: 100%;
+    padding: 15px 0px 5px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inherit;
+}

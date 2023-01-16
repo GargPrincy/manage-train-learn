@@ -1,0 +1,134 @@
+<section class="middle-part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="right-logo">
+                    <img src="assets/images/logo2.png" width="100%" alt="logo 2">
+                </div>
+                <div class="right-text"> “{{homeAllData.info?.subTitle}}” </div>
+                <div class="right-btn ">
+                    <div class="btn-1">
+                        <a class="btn" href="" routerLink="/slide-listings/top20s">View Our Top 20 Slides</a>
+                    </div>
+                    <div class="btn-2">
+                        <a class="btn" href=""  data-bs-toggle="modal" data-bs-target="#playModal">Site Settings</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="right-box ">
+                    <div class="top-hadding">
+                        <div class="box-title" id="homePageTextBoardHeading">{{homeAllData.info?.content}}</div>
+                    </div>
+                    <div class="overflow scroller">
+                        <div id="homePageTextBoard">
+                            <div class="row_one bounceInLeft"  *ngFor="let topCat of homeAllData.top_categories;let i = index"  
+                            [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'">{{i+1}}. {{topCat.content}}</div>
+                            <!-- <div class="row_two bounceInRight">2. 166+ Slides on Coaching and Learning</div> -->
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal settings-modal play-modal" id="playModal">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">SETTINGS </h4>
+          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+        </div>
+        <div class="modal-body modal-inner-box modal-play-box">
+          <div class="model-content">
+            <div class="sound-box">
+              <div class="sound-text">
+                <span class="saund-icon">
+                  <img src="assets/images/saund.png" width="100%" alt="logo 2">
+                </span>
+                <span class="text">Sound</span>
+              </div>
+              <div class="check-box">
+                <label class="toggleSwitch xlarge" onclick="">
+                  <input type="checkbox" />
+                  <span>
+                    <div>
+                      <span>OFF</span>
+                      <span>ON</span>
+                    </div>
+                  </span>
+                  <a></a>
+                </label>
+              </div>
+            </div>
+            <div class="popup-btn">
+            <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#settings">Privacy Policy</a>
+            <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#tmc">Terms and Conditions</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal settings-modal" id="settings">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">PRIVACY POLICY </h4>
+          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+        </div>
+        <div class="modal-body modal-inner-box  scroller">
+          <div class="model-title">
+            <table>
+              <tr>
+                <th class="t-one">1</th>
+                <th class="t-two">INTRODUCTION AND GENERAL TERMS</th>
+              </tr>
+            </table>
+          </div>
+          <div class="model-content">
+            <ul>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal settings-modal" id="tmc">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">TERMS & CONDITIONS</h4>
+          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+        </div>
+        <div class="modal-body modal-inner-box  scroller">
+          <div class="model-title">
+            <table>
+              <tr>
+                <th class="t-one">1</th>
+                <th class="t-two">INTRODUCTION AND GENERAL TERMS</th>
+              </tr>
+            </table>
+          </div>
+          <div class="model-content">
+            <ul>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

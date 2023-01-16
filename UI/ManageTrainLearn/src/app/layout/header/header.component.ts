@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import {Router} from '@angular/router';
 import * as jQuery from 'jquery' ;
+import { HomeService } from 'src/services/home/home.service';
+import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
 
 
 
@@ -26,6 +28,9 @@ export class HeaderComponent {
     private formBuilder: FormBuilder,
     private fb: FormBuilder,
     private router: Router,
+    private _homeService: HomeService,
+    private _slideListingService: SlideListingsService,
+    
 
   ) {
     this.homeAllData = [];
@@ -62,8 +67,25 @@ export class HeaderComponent {
     this.router.navigate(['/slide-listings',this.checkoutForm.value.searchKey]);
     if(this.checkoutForm.value.searchKey !="" ){
       const searchValue:any = this.checkoutForm.value.searchKey
+      this.getAllSlideListing(searchValue);
     }
 
+  }
+  
+  public getAllSlideListing(searchKeyword:string) {
+    this._slideListingService.getSlideRecords(searchKeyword).subscribe(
+      response => {
+          console.log("get searchhhh header",response)
+          // if (response.body?.isSuccess) {
+          this.categoriesAllData = response;
+      
+          this.showData = 1;
+       
+          //  this.subContent = response.info?.content
+          // this.users = response.body?.data?.data ?? [];   
+         //}
+      }
+    );
   }
   get myFormControl() {
     return this.myForm.controls;
@@ -74,9 +96,20 @@ export class HeaderComponent {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
   }
+  private getData() {
+    this._homeService.getHomeRecords().subscribe(
+      response => {
+        console.log("get data",response)
+       // if (response.body?.isSuccess) {
+          this.homeAllData = response;
+        //}
+      }
+    );
+  }
   
  
   ngOnInit() {
+    this.getData();  
     if (localStorage.getItem("guestUserName") === null) {
       //...
       localStorage.setItem('guestUserName', "GuestUser");

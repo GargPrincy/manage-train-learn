@@ -1,0 +1,214 @@
+<section class="middle-part video-page">
+    <div class="container">
+      <div class="row">
+
+          <div class="col-lg-12">
+              <div class="min-category-page zoomInDown">
+                  <h2 style="text-transform: uppercase;">{{slideData.title }}</h2>
+               </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-3">
+
+              <div class="cat-box-mian bounceInLeft">
+                  <div class="cat-box-block">
+                      <h3>Category:</h3>
+                      <div class="sub-block">{{slideData.category}}</div>
+                  </div>
+                <div class="cat-box-block">
+                      <h3>Topic:</h3>
+                      <div class="sub-block">{{slideData.topic}}</div>
+                  </div>
+                  <div class="cat-box-block">
+                      <h3>Producer/Presenter:</h3>
+                      <div class="sub-block">{{slideData.producer}}</div>
+                  </div>  
+                  <div class="cat-box-block">
+                      <h3>Total Slides:</h3>
+                      <div class="sub-block">{{slideData.slide_count}}</div>
+                  </div>  
+                  <div class="cat-box-block">
+                    <h3>Total Downloads:</h3>
+                    <div class="sub-block">{{slideData.download_count}}</div>
+                </div> 
+                  <div class="cat-btn">
+                  <a href="" href=""  data-bs-toggle="modal" data-bs-target="#raund-modalss">   
+                    <img (click)="shareVideoCopytext(slideData.url)" src="assets/images/share-video-btn.png" class="share-btn" alt="share icon"></a>
+                  </div>
+
+          </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-lg-6">
+            <div class="category-full-video">
+
+                    <div id="youtube-videos" class="youtube-videos" *ngIf="slideData.tags" >
+                         <nav *ngIf="isLoaded">
+                          <button (click)="prevPage()" [disabled]="page === 1" class="previous">
+                            Prev
+                          </button>
+                          <button (click)="nextPage()" [disabled]="page === totalPages" class="next">
+                            Next
+                          </button>
+                          <p>{{ page }} / {{ totalPages }}</p>
+                        </nav>
+                         <pdf-viewer [src]='slideId'
+                         [original-size]="true"
+                         [render-text]="true"
+                         [rotation]="0"
+                         [show-all]="false"
+                         [fit-to-page]="true"
+                         [zoom]="1"
+                         [zoom-scale]="'page-width'"
+                         [stick-to-page]="true"
+                         [external-link-target]="'blank'"
+                         [autoresize]="true"
+                         [show-borders]="false"
+                         [page]="page"
+                         (after-load-complete)="afterLoadComplete($event)"
+                         class="pdf-viewer"></pdf-viewer>
+                  </div>
+                  <div style="display: none">
+                    <input type="text" id="ytbUrl" value="{{slideData.url}}"/>
+                    <!-- <input type="text" id="embedUrl" value="{{videoEmbed}}"/> -->
+                  </div>
+           </div>
+         </div>
+
+     
+          <div class="col-12 col-md-4 col-lg-3 right-category bounceInRight">
+
+            <div class="cat-box-mian cat-right">
+             <div class="cat-box-right">
+              <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">View other slides in this topic.</a>
+            </div>
+            
+             <div class="cat-box-right">
+              <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalsss">    
+                Copy Embed Code</a>
+              </div>
+              <div class="cat-box-right">
+                <a (click)="downloadSlide(slideData.id)" data-bs-toggle="modal" data-bs-target="#raund-modalsse">
+                  Download this slide from this topic</a>
+                </div>
+              
+              <!-- <div class="cat-btn">
+                        <a href="" href="">    
+                          <img (click)="toggleVideo(slideData.id)" src="{{slideData.thumbnail}}" class="share-btn" alt="share icon"></a>
+                        </div> -->
+             <!-- <div class="cat-box-right"  data-bs-toggle="modal" (click)="missingSlideReport(slideData.id)" data-bs-target="#raund-modals">Report Missing Slide</div>   -->
+             <!-- <div class="cat-box-right" (click)="makeBig()" >View Video on Full Screen</div>   -->
+
+
+        </div>
+
+    </div>
+
+     
+
+
+       
+</div>
+
+      </div>
+
+      <!-- <div class="modal raund-modal" id="raund-modals">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <h3>Report Missing Slide</h3>
+                <div class="ineer-popup-content">A "Report Missing Slide" message has now been sent to the MTL team. Thank you!</div>
+                <div class="ineer-popup-close-btn">
+                          <button data-bs-dismiss="modal" class="btn" >Okay</button>
+  
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  -->
+      
+      <div class="modal raund-modal" id="raund-modalss">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <h3>Share PowerPoint</h3>
+                <div class="ineer-popup-content">The link to this page has now been copied to the user's clipboard for users to share this with others.</div>
+                <div class="ineer-popup-close-btn">
+                          <button data-bs-dismiss="modal" class="btn" >Close</button>
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="modal raund-modal" id="raund-modalsss">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <h3>Copy Embed Code</h3>
+                <div class="ineer-popup-content" style="font-size: 15px;">
+                  <!-- <iframe width="420" height="345" src="https://www.youtube.com/embed/EngW7tLk6R8">
+                  </iframe> -->
+                  <!-- {{videoEmbed}} -->
+
+                 </div>
+                <div class="ineer-popup-close-btn">
+                          <!-- <button data-bs-dismiss="modal" class="btn" (click)="embedVideoCopytext(slideData.url)" >Copy</button> -->
+                          <button data-bs-dismiss="modal" class="btn" >Copy</button>
+                          <button data-bs-dismiss="modal" class="btn btn-green" >Cancel</button>
+  
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+<!-- 
+      <div class="modal settings-modal" id="tmc">
+        <div class="modal-dialog">
+          <div class="modal-content">
+           
+            <div class="modal-header">
+               
+              <h4 class="modal-title" >Share Video </h4>
+              <img data-bs-dismiss="modal"  class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+            </div>
+            <div class="modal-body modal-inner-box  scroller">
+              <div class="model-title">
+                <table>
+                  <tr>                 
+                    <th class="t-two"> "{{slideData.producer}}, you have now downloaded {{slideData.download_count}} of downloads already in the 24 hours since the first download {{slideData.slide_count}} slides today. You have 2 downloads left in your 24-hour quota."</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="modal raund-modal" id="raund-modalsse" *ngIf= "slideData.download_count">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <div class="modal-body modal-inner-box  ">
+                <div class="model-content">
+                <!-- <h3>Share PowerPoint</h3> -->
+                <div class="ineer-popup-content">"{{slideData.producer}}, you have now downloaded {{slideData.download_count}} of downloads already in the 24 hours since the first download slides today. 
+                  You have 2 downloads left in your 24-hour quota."</div>
+                <div class="ineer-popup-close-btn">
+                          <button data-bs-dismiss="modal" class="btn" >Close</button>
+                         </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+   
+  </section>

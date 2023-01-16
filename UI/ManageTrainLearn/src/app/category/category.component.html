@@ -1,0 +1,47 @@
+
+<section class="middle-part category-page">
+    <div class="container">
+      <div class="row">
+
+          <div class="col-lg-12">
+              <div class="min-category-page">
+                  <h2>All Categories<span *ngIf="totalSlide">({{totalSlide}})</span></h2>
+                  <div class="row row-one">
+                        <div  class="col-lg-3 col-md-3" *ngFor="let cate of categoriesAllData.categories;let i = index" >
+                        <div class="col-lg-12" (click)="showTopic(i)" >
+                            {{cate.name}} ({{cate.total_topics}})
+                        </div>
+                        <div style="display: none;" id="{{i}}">
+                        <div class="row row-two"   *ngFor="let catSub of cate.topics"  >
+                            <div class="col-lg-12" >
+                           <a href="" routerLink="/slide-listings/{{catSub.name}}?topic">{{catSub.name}} ({{catSub.total_slides}})</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+
+        <div class="col-lg-6 col-md-6">
+          <div class="right-logo pulse">
+            <img src="assets/images/logo2.png" width="100%" alt="logo 2">
+          </div>
+          <div class="right-text"> “{{categoriesAllData?.info?.subTitle }}.” </div>
+           </div>
+        <div class="col-lg-6 col-md-6">
+          <div class="right-box ">
+            <div class="top-hadding">
+              <div class="box-title" id="homePageTextBoardHeading">{{categoriesAllData?.info?.content }}…</div>
+            </div>
+            <div class="overflow categoies-scroller scroller">
+              <div id="homePageTextBoard">
+                <div class="row_one bounceInLeft" *ngFor="let topCat of categoriesAllData.top_categories;let i = index"  
+                [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'">{{i+1}}. {{topCat.content}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>      
+  </section>

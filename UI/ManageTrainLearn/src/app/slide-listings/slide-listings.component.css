@@ -1,0 +1,49 @@
+.thumbnail-title a{color:white}
+.thumbnail-titless a{color:white;text-decoration:none;}
+.thumbnail-title {
+    width: 100%;
+    padding: 15px 0px 5px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inherit;
+}
+.loader {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+  }
+  
+  .loader:after {
+    content: ' ';
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: loader 1.2s linear infinite;
+  }
+  
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+
