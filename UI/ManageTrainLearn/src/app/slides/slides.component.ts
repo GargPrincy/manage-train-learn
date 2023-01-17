@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef  } from '@angular/core';
+import { Component  } from '@angular/core';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
 // import { NgImageSliderModule } from 'ng-image-video-gallery';
@@ -11,14 +11,13 @@ const FileSaver = require('file-saver');
   styleUrls: ['./slides.component.css']
 })
 export class SlideComponent {
-  @ViewChild('htmlData') htmlData!: ElementRef;
+  // @ViewChild('htmlData') htmlData!: ElementRef;
   // titless: string = 'ng2-pdf-viewer';
   public imageObject:any;
   public slideData:any = [];
   public slideId:string="";
-  // public videoTableId:any;
-  public slideCliecked = 2;
-  public videoEmbed:string = "";
+  // public slideCliecked = 2;
+  public slideEmbed:string = "";
   page: number = 1;
   totalPages: number = 0;
   isLoaded: boolean = false;
@@ -33,6 +32,7 @@ export class SlideComponent {
       
     ) {
       this.imageObject = [];
+
     }
 
     ngOnInit() {
@@ -46,12 +46,14 @@ export class SlideComponent {
 
 
         console.log(params,userId,id);
+
         let slideIds:number = parseInt(userId)
         this.getData(slideIds);
         const tag = document.createElement('script');
         console.log(tag, 'tag-princy')
         // tag.src = "https://www.youtube.com/iframe_api";
         document.body.appendChild(tag);
+
         
         
       });
@@ -69,7 +71,7 @@ export class SlideComponent {
       // alert(copyText.value)
       navigator.clipboard.writeText(copyText.value);
     }
-    public embedVideoCopytext(textShare:any){
+    public embedSlideCopytext(textShare:any){
       let copyText:any = document.getElementById('embedUrl');
       copyText.select();
       copyText.setSelectionRange(0, 99999); // For mobile devices
@@ -104,27 +106,13 @@ export class SlideComponent {
               console.log('sssssssssssssssssssssss-ddddddddd', this.slideData)
 
               this.downCount = this.slideData.today_download_count;
-
               console.log(this.downCount, 'dowen-count')
-
-              this.titleService.setTitle(this.slideData.title.toUpperCase());
-
-              //this.videoEmbed =this.slideData.url;
-              // this.videoId = this.youtube_parser(this.videoData.url);
-              console.log(this.slideData.url, 'hhhh-url')
-
               
+              this.titleService.setTitle(this.slideData.title.toUpperCase());
+              console.log(this.slideData.url, 'hhhh-url')
               // this.slideId = this.slideData.url;
               this.slideId = this.slideData.url;
-              // if(this.slideData.type == 'media'){
-              //   this.videoEmbed ="<iframe class='videoEmbedCss' width='420' height='345' src='"+this.slideData.url+"'></iframe>";
-
-              // }else{
-              //   this.videoEmbed =`<iframe class='videoEmbedCss' width='420' height='345' src='https://www.youtube.com/embed/${this.slideId}'></iframe>`;
-              // }
-              
-             
-              // return new Blob([this.slideData.blob()], { type: 'application/pdf' })
+                this.slideEmbed ="<iframe width='420' height='345' src='"+this.slideData.url+"'></iframe>";
             }
            
       );
@@ -145,9 +133,9 @@ export class SlideComponent {
   downloadSlide(slideId:number) {
     console.log("get data",slideId)
     console.log("get downloadCount",this.downCount)
-    
+
        console.log("get data")
-        if(this.slideCliecked == 2 && this.downCount <= 9){
+        if( this.downCount <= 9){
           this._slideListingService.updateSlideDownloadCount(slideId).subscribe(
             response => {  
               console.log('afterrrrrrrrrrrrrrr-clieckk', response);
@@ -161,7 +149,7 @@ export class SlideComponent {
               console.log('wwwww', this.downloadCountID);
 
               // alert('hi')
-              this.slideCliecked = 1;
+              
             });
         }
   }

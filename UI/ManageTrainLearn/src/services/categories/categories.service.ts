@@ -24,4 +24,20 @@ export class CategoriesService {
             })
         );
   }
+
+  public getCategoryDetails(slideId:number):Observable<HomeList[]> {
+
+    console.log(slideId,"dfsdf");
+    //const searchDataSend = {"searchKey":searchKeyword};
+    return this._httpService.get<HomeList[]>(API.categories.getCategoryDetails.replace('{categoryId}', slideId.toString()))
+        .pipe(
+            map( r => {
+              console.log("in services",r);
+              if (r.body?.status){
+                 this.categoryeData = r.body.data ?? [];
+              }
+              return this.categoryeData;
+            })
+        );
+  }
 }

@@ -70,7 +70,7 @@
                   </div>
                   <div style="display: none">
                     <input type="text" id="ytbUrl" value="{{slideData.url}}"/>
-                    <!-- <input type="text" id="embedUrl" value="{{videoEmbed}}"/> -->
+                    <input type="text" id="embedUrl" value="{{slideEmbed}}"/>
                   </div>
            </div>
          </div>
@@ -91,7 +91,7 @@
               <div class="cat-box-right"> 
                 <a (click)="downloadSlide(slideData.id)" data-bs-toggle="modal" data-bs-target="#raund-modalsse">
                   Download this slide from this topic</a>
-                </div>
+              </div>
               
               <!-- <div class="cat-btn">
                         <a href="" href="">    
@@ -155,14 +155,11 @@
                 <div class="model-content">
                 <h3>Copy Embed Code</h3>
                 <div class="ineer-popup-content" style="font-size: 15px;">
-                  <!-- <iframe width="420" height="345" src="https://www.youtube.com/embed/EngW7tLk6R8">
-                  </iframe> -->
-                  <!-- {{videoEmbed}} -->
-
+                  {{slideEmbed}}
                  </div>
                 <div class="ineer-popup-close-btn">
-                          <!-- <button data-bs-dismiss="modal" class="btn" (click)="embedVideoCopytext(slideData.url)" >Copy</button> -->
-                          <button data-bs-dismiss="modal" class="btn" >Copy</button>
+                          <button data-bs-dismiss="modal" class="btn" (click)="embedSlideCopytext(slideData.url)" >Copy</button>
+                          <!-- <button data-bs-dismiss="modal" class="btn" >Copy</button> -->
                           <button data-bs-dismiss="modal" class="btn btn-green" >Cancel</button>
   
                          </div>

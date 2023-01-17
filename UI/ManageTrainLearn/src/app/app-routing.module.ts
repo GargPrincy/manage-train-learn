@@ -9,14 +9,13 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { SlideAllComponent } from './slide-all/slide-all.component';
 import { SlideComponent } from './slides/slides.component';
 
-
 const routes: Routes = [
   {
     path: "",
     loadChildren:() => import('./home/home.module').then(m => m.HomeModule)
   },
   { path: 'categories', component: CategoryComponent },
-  { path: 'search', component: SearchComponent },
+  
   {
     path: "slide-listings/:slideSearchKey",
     component: SlideListingsComponent 
@@ -37,7 +36,8 @@ const routes: Routes = [
     path: "slide/:slideParamId",component: SlideComponent 
   },
   { path: 'login', component: SocialLoginComponent },
-  { path: '**', pathMatch: 'full',component: PagenotfoundComponent }
+  { path: '**', pathMatch: 'full',component: PagenotfoundComponent },
+  { path: 'search', component: SearchComponent }
 
 ];
 

@@ -28,12 +28,23 @@
           </div>
           <div class="right-user-id bounceInLeft">
             <div class="top-user-btn" id="userId">
-              <a href="" data-bs-toggle="modal" data-bs-target="#raund-modal" >
+              <!-- <a href="" data-bs-toggle="modal" data-bs-target="#raund-modal" > -->
+                <div *ngIf="!showModelPopup" >
               <div class="user_icon">
                 <img src="assets/images/user_icon.png" width="50px" alt="user icon">
               </div>
               <div class="user_name">  {{showGuestUserName}}</div>
-            </a>
+            </div>
+            <div   *ngIf="showModelPopup" data-bs-toggle="modal"  (click)="openModelData()" 
+             data-bs-target="raund-modal"
+             >
+              <div class="user_icon">
+                <img src="assets/images/user_icon.png" width="50px" alt="user icon">
+              </div>
+              <div class="user_name">{{showGuestUserName}}</div>
+
+            </div>
+            <!-- </a> -->
             </div>
           </div>
         </div>

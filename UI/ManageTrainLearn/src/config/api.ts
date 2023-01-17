@@ -10,6 +10,7 @@ export class API {
     }
     public static categories = {
         getAllData: API.apiBaseUrl + "categories",
+        getCategoryDetails: API.apiBaseUrl + "category/{categoryId}",
         getAllSlideListing: API.apiBaseUrl + "slide/search/{slideSearchKey}",
         getAllSlideListingViewAll: API.apiBaseUrl + "slide/secondarysearch/{slideSearchKey}",
         getSlideDetails: API.apiBaseUrl + "slide/details/{slideParamId}",

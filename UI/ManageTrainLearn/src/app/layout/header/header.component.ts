@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import * as jQuery from 'jquery' ;
 import { HomeService } from 'src/services/home/home.service';
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
-
+declare var $: any;
 
 
 @Component({
@@ -24,6 +24,7 @@ export class HeaderComponent {
   public categoriesAllData:any = [];
 
   public showData = 0;
+  public showModelPopup:boolean=false;
   constructor(
     private formBuilder: FormBuilder,
     private fb: FormBuilder,
@@ -112,10 +113,13 @@ export class HeaderComponent {
     this.getData();  
     if (localStorage.getItem("guestUserName") === null) {
       //...
-      localStorage.setItem('guestUserName', "GuestUser");
+      // localStorage.setItem('guestUserName', "GuestUser");
+      this.showModelPopup=true;
+      this.openModelData();
     }
 
     this.showGuestUserName = localStorage.getItem("guestUserName");
+    this.openModelData();
   
   }
   public userFormSubmit(form: FormGroup) {
@@ -142,6 +146,16 @@ export class HeaderComponent {
 }
   hidePopup(){
     jQuery(".popup-close").click();
+  }
+
+  openModelData() { 
+    this.showGuestUserName = localStorage.getItem("guestUserName");      
+    if(this.showGuestUserName == "" || this.showGuestUserName == null) {
+      console.log("aya h");
+      $('#raund-modaljohen').modal('show',{ backdrop: "static ", keyboard: false });
+      //$("#raund-modal").modal();
+
+    }    
   }
 
 }
