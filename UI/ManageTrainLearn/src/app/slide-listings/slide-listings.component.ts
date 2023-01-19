@@ -256,7 +256,7 @@ export class SlideListingsComponent {
   onChanges(e:any) {
       if(e.target.value == "viewss"){
         this.SlideSort();
-      }else     if(e.target.value  == "atoz"){
+      }else if(e.target.value  == "atoz"){
         this.SlideSortAlpha();
       }
 
@@ -274,10 +274,12 @@ get f(){
     console.log("i am in");
     this.showData = 1;
     let vidData = JSON.parse(JSON.stringify(this.categoriesAllData.data));
+  console.log('vidtaaa-listing', vidData)
+
     this.categoriesAllData.data = [];
 
     this.categoriesAllData.data = vidData.sort(function (a:any, b:any) {
-      return b.view_count - a.view_count;
+      return b.download_count - a.download_count;
     });
   
     

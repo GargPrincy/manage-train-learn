@@ -1,0 +1,16 @@
+a{text-decoration: none;}
+.thumbnail-title a{color:white}
+.thumbnail-titless a{color:white;text-decoration:none;}
+.thumbnail-title {
+  width: 100%;
+  padding: 6px 0px 0px;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: left;
+  float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+  text-transform: capitalize;
+}

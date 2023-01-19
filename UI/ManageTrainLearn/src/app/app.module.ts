@@ -17,9 +17,11 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
+
 import { SlideAllComponent } from './slide-all/slide-all.component';
 import { SlideListingsComponent } from './slide-listings/slide-listings.component';
 import { SlidesModule } from './slides/slides.module';
+import { CategoryListingsComponent } from './category-listings/category-listings.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { SlidesModule } from './slides/slides.module';
     PagenotfoundComponent,
     SocialLoginComponent,
     SlideAllComponent,
-    SlideListingsComponent
+    SlideListingsComponent,
+    CategoryListingsComponent
   ],
   imports: [
     BrowserModule,

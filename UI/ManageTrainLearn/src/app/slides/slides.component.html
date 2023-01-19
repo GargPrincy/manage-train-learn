@@ -4,7 +4,7 @@
 
           <div class="col-lg-12">
               <div class="min-category-page zoomInDown">
-                  <h2 style="text-transform: uppercase;">{{slideData.title }}</h2>
+                  <h2>{{slideData.title  | titlecase}}</h2>
                </div>
           </div>
 
@@ -80,7 +80,7 @@
 
             <div class="cat-box-mian cat-right">
              <div class="cat-box-right">
-              <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">View other slides in this topic.</a>
+              <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">View other slides in this topic</a>
             </div>
             
              <div class="cat-box-right">

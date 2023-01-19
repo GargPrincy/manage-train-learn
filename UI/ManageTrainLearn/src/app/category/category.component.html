@@ -4,20 +4,24 @@
       <div class="row">
 
           <div class="col-lg-12">
+            <div class="main-cate-head text-center">
+              <h2>Categories</h2>
+            </div>
               <div class="min-category-page">
-                  <h2>All Categories<span *ngIf="totalSlide">({{totalSlide}})</span></h2>
+                  <!-- <h2>All Categories<span *ngIf="totalSlide">({{totalSlide}})</span></h2> -->
                   <div class="row row-one">
-                        <div  class="col-lg-3 col-md-3" *ngFor="let cate of categoriesAllData.categories;let i = index" >
+                        <div  class="col-xl-3 col-lg-4 col-6" *ngFor="let cate of categoriesAllData.categories;let i = index" >
                         <div class="col-lg-12" (click)="showTopic(i)" >
-                            {{cate.name}} ({{cate.total_topics}})
+                            <!-- {{cate.name}} ({{cate.total_topics}}) -->
+                          <a href=""  routerLink="/category-listing/{{cate.id}}">{{cate.name}} ({{cate.total_slides}})</a>
                         </div>
-                        <div style="display: none;" id="{{i}}">
+                        <!-- <div style="display: none;" id="{{i}}">
                         <div class="row row-two"   *ngFor="let catSub of cate.topics"  >
                             <div class="col-lg-12" >
                            <a href="" routerLink="/slide-listings/{{catSub.name}}?topic">{{catSub.name}} ({{catSub.total_slides}})</a>
                             </div>
                         </div>
-                        </div>
+                        </div> -->
                     </div>
                   </div>
               </div>

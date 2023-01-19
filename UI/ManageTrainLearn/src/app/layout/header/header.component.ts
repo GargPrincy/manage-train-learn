@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import * as jQuery from 'jquery' ;
+import * as jQuery from 'jquery';
 import { HomeService } from 'src/services/home/home.service';
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
 declare var $: any;
-
 
 @Component({
   selector: 'app-header',
@@ -51,6 +50,11 @@ export class HeaderComponent {
   checkoutForm = this.formBuilder.group({
     searchKey: ''
   });
+  forms = new FormGroup({
+
+    categories: new FormControl('')
+
+  });
 
   public onGoToPage2(){
     this.checkoutForm.reset();
@@ -80,11 +84,7 @@ export class HeaderComponent {
           // if (response.body?.isSuccess) {
           this.categoriesAllData = response;
       
-          this.showData = 1;
-       
-          //  this.subContent = response.info?.content
-          // this.users = response.body?.data?.data ?? [];   
-         //}
+          this.showData = 1;  
       }
     );
   }
@@ -107,7 +107,6 @@ export class HeaderComponent {
       }
     );
   }
-  
  
   ngOnInit() {
     this.getData();  
@@ -127,7 +126,7 @@ export class HeaderComponent {
     this.submitted = true; 
     if(form.valid){
       if(form.value.name  == "" || form.value.name  == null){
-        localStorage.setItem('guestUserName', "GuestUser" );
+        // localStorage.setItem('guestUserName', "GuestUser" );
         this.showGuestUserName = localStorage.getItem("guestUserName");      
       }else{
         localStorage.setItem('guestUserName',  form.value.name.trim());
@@ -149,11 +148,11 @@ export class HeaderComponent {
   }
 
   openModelData() { 
-    this.showGuestUserName = localStorage.getItem("guestUserName");      
+    this.showGuestUserName = localStorage.getItem("guestUserName");  
+    console.log(this.showGuestUserName, 'guest-namee')    
     if(this.showGuestUserName == "" || this.showGuestUserName == null) {
       console.log("aya h");
-      $('#raund-modaljohen').modal('show',{ backdrop: "static ", keyboard: false });
-      //$("#raund-modal").modal();
+      $('#raunds-row-modals').modal('show',{ backdrop: "static ", keyboard: false });
 
     }    
   }

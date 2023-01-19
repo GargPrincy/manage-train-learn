@@ -8,6 +8,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SocialLoginComponent } from './social-login/social-login.component';
 import { SlideAllComponent } from './slide-all/slide-all.component';
 import { SlideComponent } from './slides/slides.component';
+import { CategoryListingsComponent } from './category-listings/category-listings.component';
+
 
 const routes: Routes = [
   {
@@ -15,6 +17,7 @@ const routes: Routes = [
     loadChildren:() => import('./home/home.module').then(m => m.HomeModule)
   },
   { path: 'categories', component: CategoryComponent },
+  { path: 'category-listing/:categoryId', component: CategoryListingsComponent },
   
   {
     path: "slide-listings/:slideSearchKey",

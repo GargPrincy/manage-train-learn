@@ -4,7 +4,9 @@ import { SocialUser ,FacebookLoginProvider, GoogleLoginProvider } from '@abacrit
 import { HomeService } from 'src/services/home/home.service';
 //import { IndexModel } from 'src/models/common/index.model';
 import { Title } from '@angular/platform-browser';
+import { FormBuilder} from '@angular/forms';
 
+declare var $: any;
 
 @Component({
   selector: 'app-home',
@@ -26,7 +28,9 @@ export class HomeComponent {
 
   constructor(private authService: SocialAuthService,
     private _homeService: HomeService,
-    private titleService: Title    
+    private titleService: Title,
+    private formBuilder: FormBuilder
+
     ) {     
       this.titleService.setTitle("MTL Home");
       this.homeAllData = [];
@@ -56,6 +60,12 @@ export class HomeComponent {
     
 
    }
+
+   checkoutForm = this.formBuilder.group({
+    searchKey: ''
+  });  
+
+  get f() { return this.checkoutForm.controls; }
 
   ngOnInit() {
     this.titleService.setTitle("MTL Home");
