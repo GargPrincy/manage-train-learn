@@ -1,11 +1,11 @@
 <section class="middle-part">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-xxl-5 col-lg-6">
                 <div class="right-logo">
                     <img src="assets/images/logo2.png" width="100%" alt="logo 2">
                 </div>
-                <div class="right-text"> “{{homeAllData.info?.subTitle}}” </div>
+                <div class="right-text mt-3"> “{{homeAllData.info?.subTitle}}” </div>
                 <div class="right-btn ">
                     <div class="btn-1">
                         <a class="btn" href="" routerLink="/slide-listings/top20s">View Our Top 20 Slides</a>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-xl-6 col-lg-6">
                 <div class="right-box ">
                     <div class="top-hadding">
                         <div class="box-title" id="homePageTextBoardHeading">{{homeAllData.info?.content}}</div>
@@ -23,9 +23,7 @@
                     <div class="overflow scroller">
                         <div id="homePageTextBoard">
                             <div class="row_one bounceInLeft"  *ngFor="let topCat of homeAllData.top_categories;let i = index"  
-                            [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'">{{i+1}}. {{topCat.content}}</div>
-                            <!-- <div class="row_two bounceInRight">2. 166+ Slides on Coaching and Learning</div> -->
-                           
+                            [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'"><span class="cate-no">{{i+1}}.</span>{{topCat.content}}</div>
                         </div>
                     </div>
                 </div>
@@ -43,27 +41,28 @@
         </div>
         <div class="modal-body modal-inner-box modal-play-box">
           <div class="model-content">
-            <div class="sound-box">
-              <div class="sound-text">
-                <span class="saund-icon">
-                  <img src="assets/images/saund.png" width="100%" alt="logo 2">
-                </span>
-                <span class="text">Sound</span>
-              </div>
-              <div class="check-box">
-                <label class="toggleSwitch xlarge" onclick="">
-                  <input type="checkbox" />
-                  <span>
-                    <div>
-                      <span>OFF</span>
-                      <span>ON</span>
+            <div class="sound-box mt-4 mb-5">
+              <div class="row align-items-center">
+                  <div class="col-auto">
+                    <div class="sound-text">
+                      <span class="saund-icon">
+                        <img src="assets/images/saund.png" width="100%" alt="logo 2">
+                      </span>
+                      <span class="text">Sound</span>
                     </div>
-                  </span>
-                  <a></a>
-                </label>
+                  </div>
+                  <div class="col-auto">
+                    <label class="toggle-switch">
+                      <input type="checkbox" id="checkkkd" [(ngModel)]="selected"  (click)="doAction($event)">
+                      <div class="slider"> <div class="on-off-btn"></div></div>
+                     
+                    </label>
+                    </div>
               </div>
+              
+             
             </div>
-            <div class="popup-btn">
+            <div class="popup-btn mb-4">
             <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#settings">Privacy Policy</a>
             <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#tmc">Terms and Conditions</a>
           </div>

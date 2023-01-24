@@ -1,6 +1,6 @@
-.pdf-viewer {
-   height: 100vh;
+.pdf-viewer { 
    width: 100%;
    display: block;
    margin: 0 auto;
+   aspect-ratio: 1 / 1.4142;
  }

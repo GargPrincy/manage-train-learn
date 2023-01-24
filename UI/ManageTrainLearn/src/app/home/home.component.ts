@@ -21,6 +21,8 @@ export class HomeComponent {
   public isLoggedin: boolean = false;
   public homeAllData:any = [];
   public subContent:string = "";
+  public soundStatus:boolean =true;
+  public selected: boolean = false;
   //public homeAllData : [] = [];
  // public indexModel: IndexModel;
   
@@ -67,6 +69,17 @@ export class HomeComponent {
 
   get f() { return this.checkoutForm.controls; }
 
+  doAction(event:any){
+    console.log(event.target.checked)
+    if(event.target.checked == true){
+      localStorage.setItem("soundProp","1" );
+    } else if(event.target.checked == false){
+      localStorage.setItem("soundProp","2" );
+    }
+    
+  }
+
+
   ngOnInit() {
     this.titleService.setTitle("MTL Home");
 
@@ -75,6 +88,28 @@ export class HomeComponent {
       this.user = user;      
       this.isLoggedin = (user != null);
     }); /**/
+
+    let soundStatusCheck = localStorage.getItem("soundProp");
+
+    if(soundStatusCheck ==null ||  soundStatusCheck ==undefined ||  soundStatusCheck == "" ){
+      localStorage.setItem("soundProp","1" );
+      this.playAudio();
+    }
+    console.log(soundStatusCheck, "sound-check-status");
+  }
+
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "./assets/audios/click.wav";
+    audio.load();
+    audio.play();
+  }
+ pauseAudio() {
+    let audio = new Audio();
+    audio.src = "./assets/audios/click.wav";
+    audio.load();
+    audio.pause();
+ 
   }
 
   private getData() {
@@ -108,5 +143,9 @@ export class HomeComponent {
 
   refreshToken(): void {
     this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+  }
+  openModelData() { 
+    $('#playModal').modal('hide'); 
+    $('#settingssss').modal('show');   
   }
 }

@@ -24,11 +24,7 @@ export class HomeService {
     this.homeData = [];
   }
 
-  // public getUsers() {
 
-  //     return this._httpService.get<HomeList>(AppSetting.record.delete.replace('recordId', recordId.toString()))
-
-  // }
   public getHomeRecords():Observable<HomeList[]> {
     return this._httpService.get<HomeList[]>(API.home.getAllData)
         .pipe(

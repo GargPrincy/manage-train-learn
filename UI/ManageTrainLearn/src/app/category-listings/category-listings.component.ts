@@ -2,11 +2,10 @@
 import { Component } from '@angular/core';
 import { CategoriesService } from 'src/services/categories/categories.service';
 import {Router, ActivatedRoute, NavigationEnd,Event} from '@angular/router';
-import * as jQuery from 'jquery';
 import { Title } from '@angular/platform-browser';
 
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { FormGroup, FormControl, Validators,ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -21,8 +20,10 @@ export class CategoryListingsComponent {
 
   });
   public showContent:boolean=false;
+  public loading:boolean = true;
   public showCurrentTopic:string = "";
   public categoriesAllDataCategoryListing:any = [];
+  public noData:boolean=false;
     customOptions: OwlOptions = {
     autoplay: false,
     rewind: false /* use rewind if you don't want loop */,
@@ -59,13 +60,17 @@ export class CategoryListingsComponent {
 
       this.router.events.subscribe((event: Event) => {
         if (event instanceof NavigationEnd) {
-        
+          this.loading =true;
       
           const cateId:any = this.activatedRoute.snapshot.paramMap.get('categoryId')?.toString();
           this.getData(cateId);
         }
 
     });
+
+    setTimeout(()=>{    
+      this.loading = false;
+    },600);
 
     }
 
@@ -85,6 +90,19 @@ export class CategoryListingsComponent {
       
       
     });
+    setTimeout(()=>{    
+      this.loading = false;
+    },600);
+
+  }
+
+  ngAfterViewInit() {
+      
+    setTimeout(()=>{    
+      this.loading = false;
+    },600);
+   
+    //We loading the player script on after view is loaded
   }
 
 
@@ -94,8 +112,13 @@ export class CategoryListingsComponent {
         
          // if (response) {
           this.categoriesAllDataCategoryListing = response[0];
-         console.log("get datavallllllllll",this.categoriesAllDataCategoryListing );
-          this.showContent = true;
+
+        //  console.log("get datavallllllllll",this.categoriesAllDataCategoryListing );
+        let arr = this.categoriesAllDataCategoryListing.topicDetails;
+
+          this.noData = arr.every((value:any)=> { 
+            return (value.total_slides < 1); 
+        });
          
           setTimeout(() => {
             this.showTopic(0);  
@@ -105,28 +128,12 @@ export class CategoryListingsComponent {
   }
   showTopic(id:number){
     console.log(id,"ddddd");
-   // jQuery("#"+id).attr("style", "display:block");
- //  $("#"+id).attr("style", "visibility:visible");
-
- //  $("#"+id).click(function(){
-  
-  $(".mainAll").css('display','none');
-    if ( $("#"+id).css('display') == 'none' )
-      $("#"+id).css('display','block');
-    else
-      $("#"+id).css('display','none');
-//  });
-
-
-this.showCurrentTopic = this.categoriesAllDataCategoryListing.topicDetails[id].topic_name;
-
-
-   setTimeout(() => {
-   // $("#"+id).toggle("slow")
-   }, 2000);
- 
-
+    if( this.categoriesAllDataCategoryListing.topicDetails[id]){
+      this.showCurrentTopic = this.categoriesAllDataCategoryListing.topicDetails[id].topic_name;
+      this.showContent = true; 
+    }
   }
+
   onChanges(e:any,ind:any) {
     if(e.target.value == "viewss"){
       this.SlideSort(ind);
@@ -154,6 +161,9 @@ SlideSort(indexed:any){
     return b.download_count - a.download_count;
   });
 
+  setTimeout(()=>{    
+    this.loading = false;
+  },100);
 
 
 
@@ -171,6 +181,10 @@ SlideSortAlpha(indexed:any){
      return 1;
     return 0; //default return value (no sorting)
    });
+
+   setTimeout(()=>{    
+    this.loading = false;
+  },100);
 
   
 

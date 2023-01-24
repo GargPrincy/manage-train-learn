@@ -4,6 +4,8 @@ import { SlideListingsService } from 'src/services/slide-listings/slide-listings
 import {Router, ActivatedRoute, NavigationEnd,Event, NavigationStart, NavigationError} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { FormGroup, FormControl} from '@angular/forms';
+
 
 
 @Component({
@@ -12,6 +14,11 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./slide-all.component.css']
 })
 export class SlideAllComponent {
+  form = new FormGroup({
+
+    website: new FormControl('')
+
+  });
   public loading:boolean = true;
   
   public showMore:any;
@@ -222,11 +229,7 @@ export class SlideAllComponent {
   showMoreItems(){
     console.log(186,this.categoriesAllData.allData);
     this._slideListingService.getSlideRecordsViewAllPagination(this.categoriesAllData.allData.total.next_page_url).subscribe(
-      response => {
-
-          // if (response.body?.isSuccess) {
-            //this.zone.run(() => { // <== added
-     
+      response => {     
               console.log("203",response)
               this.categoriesAllData.data = [...this.categoriesAllData.data ,...response.data];
               //this.categoriesAllData.data.push(response.data);
@@ -272,14 +275,20 @@ export class SlideAllComponent {
     );
   }
 
-  videoSort(){  
+  get f(){
+
+    return this.form.controls;
+  
+  }
+
+  SlideSort(){  
     console.log("i am in");
     this.showData = 1;
     let vidData = JSON.parse(JSON.stringify(this.categoriesAllData.data));
     this.categoriesAllData.data = [];
 
     this.categoriesAllData.data = vidData.sort(function (a:any, b:any) {
-      return b.view_count - a.view_count;
+      return b.download_count - a.download_count;
     });
   
     
@@ -289,6 +298,42 @@ export class SlideAllComponent {
 
   
   }
+
+  SlideSortAlpha(){  
+    console.log("i am in");
+    this.showData = 1;
+    let vidData = JSON.parse(JSON.stringify(this.categoriesAllData.data));
+    this.categoriesAllData.data = [];
+
+    this.categoriesAllData.data = vidData.sort(function(a:any, b:any){
+      var nameA = a.title.toLowerCase(), nameB = b.title.toLowerCase();
+      if (nameA < nameB) //sort string ascending
+       return -1;
+      if (nameA > nameB)
+       return 1;
+      return 0; //default return value (no sorting)
+     });
+  
+    
+    setTimeout(()=>{    
+      this.loading = false;
+    },100);
+
+  
+  }
+
+  
+  onChanges(e:any) {
+    if(e.target.value == "viewss"){
+      this.SlideSort();
+    }else     if(e.target.value  == "atoz"){
+      this.SlideSortAlpha();
+    }
+
+    console.log(e.target.value);
+
+
+}
 
       
   

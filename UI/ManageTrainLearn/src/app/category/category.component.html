@@ -8,21 +8,13 @@
               <h2>Categories</h2>
             </div>
               <div class="min-category-page">
-                  <!-- <h2>All Categories<span *ngIf="totalSlide">({{totalSlide}})</span></h2> -->
-                  <div class="row row-one">
-                        <div  class="col-xl-3 col-lg-4 col-6" *ngFor="let cate of categoriesAllData.categories;let i = index" >
+                  <div class="row row-one pb-0">
+                        <div  class="col-xl-3  col-lg-4 col-6" *ngFor="let cate of categoriesAllData.categories;let i = index" >
                         <div class="col-lg-12" (click)="showTopic(i)" >
-                            <!-- {{cate.name}} ({{cate.total_topics}}) -->
-                          <a href=""  routerLink="/category-listing/{{cate.id}}">{{cate.name}} ({{cate.total_slides}})</a>
+                          <a href=""  routerLink="/category-listing/{{cate.id}}">{{cate.name | titlecase}} ({{cate.total_slides}})</a>
                         </div>
-                        <!-- <div style="display: none;" id="{{i}}">
-                        <div class="row row-two"   *ngFor="let catSub of cate.topics"  >
-                            <div class="col-lg-12" >
-                           <a href="" routerLink="/slide-listings/{{catSub.name}}?topic">{{catSub.name}} ({{catSub.total_slides}})</a>
-                            </div>
-                        </div>
-                        </div> -->
                     </div>
+                    
                   </div>
               </div>
           </div>
@@ -41,7 +33,7 @@
             <div class="overflow categoies-scroller scroller">
               <div id="homePageTextBoard">
                 <div class="row_one bounceInLeft" *ngFor="let topCat of categoriesAllData.top_categories;let i = index"  
-                [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'">{{i+1}}. {{topCat.content}}</div>
+                [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'"><span class="cate-no">{{i+1}}.</span> {{topCat.content}}</div>
               </div>
             </div>
           </div>

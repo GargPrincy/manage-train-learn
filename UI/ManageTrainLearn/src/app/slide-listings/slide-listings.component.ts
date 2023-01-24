@@ -135,17 +135,16 @@ export class SlideListingsComponent {
       } 
     });
 
-
       setTimeout(()=>{    
         this.loading = false;
-      },1000);
+      },600);
     }
 
     ngAfterViewInit() {
       
       setTimeout(()=>{    
         this.loading = false;
-      },1000);
+      },600);
      
       //We loading the player script on after view is loaded
     }
@@ -154,7 +153,7 @@ export class SlideListingsComponent {
       
       setTimeout(()=>{    
         this.loading = false;
-      },1600);
+      },600);
 
     }
      

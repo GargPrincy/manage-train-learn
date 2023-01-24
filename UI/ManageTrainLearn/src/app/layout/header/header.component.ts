@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router,Event,RoutesRecognized} from '@angular/router';
 import * as jQuery from 'jquery';
 import { HomeService } from 'src/services/home/home.service';
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
@@ -21,6 +21,7 @@ export class HeaderComponent {
   public showGuestUserName:any = "";
 
   public categoriesAllData:any = [];
+  public catId:number=1;
 
   public showData = 0;
   public showModelPopup:boolean=false;
@@ -55,6 +56,19 @@ export class HeaderComponent {
     categories: new FormControl('')
 
   });
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "./assets/audios/click.wav";
+    audio.load();
+    audio.play();
+  }
+  pauseAudio() {
+    let audio = new Audio();
+    audio.src = "./assets/audios/click.wav";
+    audio.load();
+    audio.pause();
+ 
+  }
 
   public onGoToPage2(){
     this.checkoutForm.reset();
@@ -109,6 +123,47 @@ export class HeaderComponent {
   }
  
   ngOnInit() {
+    this.router.events.subscribe((event:Event) => {
+      if (event instanceof RoutesRecognized) {
+
+
+       let cateIds = parseInt(event.state.root.firstChild?.params["categoryId"]);
+       if(isNaN(cateIds)){
+        this.catId = 0;
+       } else {
+        this.catId = event.state.root.firstChild?.params["categoryId"];
+       }
+      console.log(this.catId,'princy-actaid');
+
+      let soundStatusCheck = localStorage.getItem("soundProp");
+      if(soundStatusCheck ==null ||  soundStatusCheck ==undefined ||  soundStatusCheck == "" ||  soundStatusCheck == ""){
+        this.playAudio();
+        console.log("if"); 
+        setTimeout(function(){   
+          $("#checkkkd").prop('checked', true); 
+        },800) 
+      } else if( soundStatusCheck == "1" ) {
+        this.playAudio();
+        console.log("if");   
+        setTimeout(function(){
+          $("#checkkkd").prop('checked', true); 
+        },800) 
+      } else if( soundStatusCheck == "2" ) {
+        this.pauseAudio();
+        console.log("if");    
+        setTimeout(function(){   
+          $("#checkkkd").prop('checked', false); 
+        },800) 
+      }else {
+        console.log("elsessss111");
+        this.playAudio();
+        //$("#offBtn").css("display", "block");
+        //$("#onBtn").css("display", "none");
+      }
+      console.log(soundStatusCheck,"sound-check-status");
+      
+    }
+  });
     this.getData();  
     if (localStorage.getItem("guestUserName") === null) {
       //...

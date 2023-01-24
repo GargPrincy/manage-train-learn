@@ -1,98 +1,99 @@
 <section class="middle-part video-list">
-    <span class="loader" *ngIf="loading"></span>
+  <span class="loader" *ngIf="loading"></span>
+
+
+  <div class="container">
+    <div class="row">
+          <div class="row justify-content-between align-items-center">
+
+            <div class="col-auto">
+              <h2 class="category-topic m-0">
+               {{showKeyword | titlecase}}
+              </h2>
+            </div>
   
-    <!-- {{searchWord}}Amandfddfd -->
-   
-    <div class="container">
-      <div class="row">
-          <div class="col-md-12">
-                  <h2>{{showKeyword}}</h2>
+  
+            <div class="col">
+              <div >
+                <div class="row justify-content-end mb-3">
+               
+                  <div class="col-auto">
+                    <form [formGroup]="form">
+                      <div class="border-box border-border">
+                        <select
+                          name="languages"
+                          id="lang"
+                          (change)="onChanges($event)"
+                        >
+                          <option value="">Sort</option>
+                          <option value="viewss">
+                            Sort (by downloads)
+                          </option>
+                          <option value="atoz">
+                            Sort (A-Z title)
+                          </option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
           </div>
-          <!-- <div class="col-md-4">
-              <div class="border-box" *ngIf="categoriesAllData.length && showData && !loading"><a  target="_self" (click)="videoSort()">Sort</a> </div>  
-          </div> -->
-      </div>
-      <!-- <button id="show" data-theme="b">
+    </div>
+    <!-- <button id="show" data-theme="b">
         Default loader
       </button> -->
-      <!-- {{categoriesAllData | json}} -->
-      <div class="row"  *ngIf="categoriesAllData.data.length && showData">
-         <div class="col-md-12 product-video-box"  id="galleries-list">
-  
-        
-   
-         <div class="col-md-12"  *ngIf="categoriesAllData.data.length && showData">
-          <div class="wrapper">
+    <!-- {{categoriesAllData | json}} -->
+    <div class="row" *ngIf="categoriesAllData.data.length && showData">
 
-        <div class="row">
-  
-        <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
-        <a   href=""  routerLink="/slide/{{slide.id}}">
-          <div class="thumbnail-box"> <img  style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px" width="100%" alt="product-img">
-          </div> 
-          <div class="thumbnail-title"> {{slide.title  | titlecase}}</div>
-        </a> 
-        <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
-        <div class="sub-title-2">{{slide.slide_count}} slides <span> {{slide.download_count}} downloads</span> </div> 
+      <div class="col-md-12">
+        <div class="product-video-box pt-3" id="galleries-list">
+          <div class="col-md-12" *ngIf="categoriesAllData.data.length && showData">
+            <div class="wrapper">
+
+              <div class="row">
+
+                <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+                  <a href="" routerLink="/slide/{{slide.id}}">
+                    <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
+                        width="100%" alt="product-img">
+                    </div>
+                    <div class="thumbnail-title"> {{slide.title | titlecase}}</div>
+                  </a>
+                  <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
+                  <div class="row justify-content-between">
+                    <div class="col-auto">
+                      <div class="sub-title-2">{{slide.slide_count}} slides</div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="sub-title-2">{{slide.download_count}} downloads</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="categoriesAllData.data.length == 0 && !loading">
+          <h3 class="error-msg">No matching records found</h3>
+
+        </div>
       </div>
-      </div>      </div>
-     </div>
-     <div class="col-md-12"  *ngIf="categoriesAllData.data.length == 0 && !loading">
-      <h3 class="error-msg">No matching records found</h3>
-     </div>
-    </div>
-  
-     </div>
-     <div class="text-center">
-     <button *ngIf ="showMore" class="btn btn-primary" (click)="showMoreItems()">
-      Show More
-     </button>
-    </div>
-    </div>
 
-  
-    
-     <!-- <mdb-carousel [controls]="true" >
-      <mdb-carousel-item>
-        <img
-          src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).webp"
-          class="d-block w-100"
-          alt="..."
-        />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </div>
-      </mdb-carousel-item>
-      <mdb-carousel-item>
-        <img
-          src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).webp"
-          class="d-block w-100"
-          alt="..."
-        />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </mdb-carousel-item>
-      <mdb-carousel-item>
-        <img
-          src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).webp"
-          class="d-block w-100"
-          alt="..."
-        />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </mdb-carousel-item>
-    </mdb-carousel> -->
-     
-    </section>
-  
-    <style>
-        
-    
+    </div>
+    <div class="text-center">
+      <button *ngIf="showMore" class="btn btn-primary btn-blue" (click)="showMoreItems()">
+        Show More
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<style>
   .owl-nav button {
     position: absolute;
     top: 50%;
@@ -101,17 +102,20 @@
     margin: 0;
     transition: all 0.3s ease-in-out;
   }
+
   .owl-nav button.owl-prev {
     left: 0;
   }
+
   .owl-nav button.owl-next {
     right: 0;
   }
-  
+
   .owl-dots {
     text-align: center;
     padding-top: 15px;
   }
+
   .owl-dots button.owl-dot {
     width: 15px;
     height: 15px;
@@ -120,50 +124,63 @@
     background: #ccc;
     margin: 0 3px;
   }
+
   .owl-dots button.owl-dot.active {
     background-color: #000;
   }
+
   .owl-dots button.owl-dot:focus {
     outline: none;
   }
+
   .owl-nav button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.38) !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.38) !important;
   }
+
   .owl-nav span {
-      font-size: 70px;    
-      position: relative;
-      top: -5px;
+    font-size: 70px;
+    position: relative;
+    top: -5px;
   }
+
   .owl-nav button:focus {
-      outline: none;
+    outline: none;
   }
-  
-  .owl-dots{ display:none;}
-  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot
-  { background:inherit!important;}
-  
+
+  .owl-dots {
+    display: none;
+  }
+
+  .owl-carousel .owl-nav button.owl-next,
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel button.owl-dot {
+    background: inherit !important;
+  }
+
   .owl-nav .owl-prev span {
-    margin-left: -75px!important;
+    margin-left: -75px !important;
     background-image: url(https://course.24livehost.com/mtl_build/assets/images/arrow-left.png);
     font-size: 1px;
     width: 59px;
     height: 121px;
     float: left;
   }
-  
-  
+
+
   .owl-nav .owl-next span {
-    margin-right: -90px!important;
+    margin-right: -90px !important;
     background-image: url(https://course.24livehost.com/mtl_build/assets/images/arrow-right.png);
     font-size: 1px;
     width: 59px;
     height: 121px;
     float: left;
-  margin-left: 15px;
+    margin-left: 15px;
   }
-  
-  .owl-carousel.owl-drag .owl-item .item{ padding:10px;}
-    </style>
+
+  .owl-carousel.owl-drag .owl-item .item {
+    padding: 10px;
+  }
+</style>
