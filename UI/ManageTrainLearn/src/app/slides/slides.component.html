@@ -4,43 +4,50 @@
 
           <div class="col-lg-12">
               <div class="min-category-page zoomInDown">
-                  <h2>{{slideData.title  | titlecase}}</h2>
+                  <h2>{{slideData.title }}</h2>
                </div>
           </div>
 
-          <div class="col-sm-12 col-md-4 col-xxl-3">
+          <div class="col-xxl-3 col-xl-4 order-xl-1 order-2 mb-xl-0 mb-4">
+            <div class="pe-xxl-0 pe-xl-4 pe-0">
               <div class="cat-box-mian bounceInLeft">
                   <div class="cat-box-block">
+                    <div class="cat-box-block-inner">
                       <h3>Category:</h3>
                       <div class="sub-block">{{slideData.category}}</div>
+                    </div>
                   </div>
                 <div class="cat-box-block">
+                  <div class="cat-box-block-inner">
                       <h3>Topic:</h3>
                       <div class="sub-block">{{slideData.topic}}</div>
+                    </div>
                   </div>
                   <div class="cat-box-block">
+                    <div class="cat-box-block-inner">
                       <h3>Producer/Presenter:</h3>
                       <div class="sub-block">{{slideData.producer}}</div>
+                    </div>
                   </div>  
                   <div class="cat-box-block">
+                    <div class="cat-box-block-inner">
                       <h3>Total Slides:</h3>
                       <div class="sub-block">{{slideData.slide_count}}</div>
+                    </div>
                   </div>  
-                  <div class="cat-box-block">
+                  <div class="cat-box-block mb-0">
+                    <div class="cat-box-block-inner">
                     <h3>Total Downloads:</h3>
                     <div class="sub-block">{{slideData.download_count}}</div>
-                </div> 
-                  <div class="cat-btn">
-                  <a href="" href=""  data-bs-toggle="modal" data-bs-target="#raund-modalss">   
-                    <img (click)="shareVideoCopytext(slideData.url)" src="assets/images/share-video-btn.png" class="share-btn" alt="share icon"></a>
                   </div>
-
+                </div> 
+              </div>
+              </div>
           </div>
-          </div>
 
-          <div class="col-sm-12 col-md-4 col-xxl-5 m-auto">
-                    <div id="youtube-videos" class="youtube-videos position-relative" *ngIf="slideData.tags" >
-                       <div class="category-full-video">
+          <div class="col-xxl-5 col-xl-4 order-1 order-xl-2 mb-xl-0 mb-4 mx-xxl-auto">
+                    <div id="youtube-videos" class="youtube-videos position-relative h-100" *ngIf="slideData.tags" >
+                       <div class="category-full-video h-100">
                          <pdf-viewer class="" [src]='slideId'
                          [original-size]="true"
                          [render-text]="true"
@@ -57,7 +64,7 @@
                          (after-load-complete)="afterLoadComplete($event)"
                          class="pdf-viewer"></pdf-viewer>
                         </div>
-                         <nav *ngIf="isLoaded" class="pdf-btn ">
+                         <nav *ngIf="isLoaded" class="pdf-btn p-0">
                           <button (click)="prevPage()" [disabled]="page === 1" class="previous">
                             <img src="assets/images/arrow-left.png">
                           </button>
@@ -75,22 +82,46 @@
          
 
      
-          <div class="col-12 col-md-4 col-xxl-3 right-category bounceInRight">
-
+          <div class="col-xxl-3 col-xl-4  order-xl-3 order-2  right-category bounceInRight">
+            <div class="ps-xxl-0 ps-xl-4 ps-0 h-100">
             <div class="cat-box-mian cat-right">
              <div class="cat-box-right">
-              <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">View other slides in this topic</a>
+              
+              <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">
+                <img src="assets/images/video_view_icon.png" alt="" />
+               <div class="right-btnn">View other topic slides</div> 
+              </a>
             </div>
             
              <div class="cat-box-right">
-              <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalsss">    
-                Copy Embed Code</a>
+            
+              <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalsss"> 
+                <img src="assets/images/copy_icon.png" alt="" />   
+                <div class="right-btnn"> Copy Embed Code</div>
+                </a>
               </div>
+
               <div class="cat-box-right"> 
+                
                 <a (click)="downloadSlide(slideData.id)" data-bs-toggle="modal" data-bs-target="#raund-modalsse">
-                  Download this slide from this topic</a>
+                  <img src="assets/images/download.png" alt="" />
+                  <div class="right-btnn">Download this slide</div>
+                </a>
               </div>
-              
+
+              <div class="cat-box-right"> 
+                
+                <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalss">   
+                  <img src="assets/images/share-btn.png" alt="" />
+                  <div class="right-btnn">Share PowerPoint</div>
+                </a>
+              </div>
+
+
+                <!-- <div class="cat-btn text-center">
+                  <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalss" class="d-block">   
+                    <img (click)="shareVideoCopytext(slideData.url)" src="assets/images/share-video-btn.png" class="share-btn" alt="share icon"></a>
+                  </div> -->
               <!-- <div class="cat-btn">
                         <a href="" href="">    
                           <img (click)="toggleVideo(slideData.id)" src="{{slideData.thumbnail}}" class="share-btn" alt="share icon"></a>
@@ -100,7 +131,7 @@
 
 
         </div>
-
+      </div>
     </div>
 
   </div>  
@@ -110,7 +141,7 @@
       </div>
 
       <!-- <div class="modal raund-modal" id="raund-modals">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
        
             <div class="modal-body modal-inner-box  ">
@@ -128,7 +159,7 @@
       </div>  -->
       
       <div class="modal raund-modal" id="raund-modalss">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
        
             <div class="modal-body modal-inner-box  ">
@@ -144,13 +175,13 @@
         </div>
       </div> 
       <div class="modal raund-modal" id="raund-modalsss">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
        
             <div class="modal-body modal-inner-box  ">
                 <div class="model-content">
                 <h3>Copy Embed Code</h3>
-                <div class="ineer-popup-content" style="font-size: 15px;">
+                <div class="ineer-popup-content">
                   {{slideEmbed}}
                  </div>
                 <div class="ineer-popup-close-btn">
@@ -166,7 +197,7 @@
       </div> 
 <!-- 
       <div class="modal settings-modal" id="tmc">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
            
             <div class="modal-header">
@@ -188,12 +219,12 @@
       </div> -->
 
       <div class="modal raund-modal" id="raund-modalsse" *ngIf= "slideData.download_count">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
        
             <div class="modal-body modal-inner-box  ">
                 <div class="model-content">
-                <!-- <h3>Share PowerPoint</h3> -->
+                <h3>Download Slide</h3>
                 <div class="ineer-popup-content">"{{slideData.producer}}, you have now downloaded {{slideData.today_download_count}} of downloads already in the 24 hours since the first download slides today. 
                   You have {{downloadCountID}} downloads left in your 24-hour quota."</div>
                 <div class="ineer-popup-close-btn">

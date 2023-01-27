@@ -14,21 +14,21 @@
       </div>
 
       <div class="col-auto">
-
-        <div class="border-box d-inline-block" *ngIf="categoriesAllData.data.length && showData ">
+        <form class="d-inline-block" [formGroup]="form"
+        *ngIf="categoriesAllData.data.length && showData">
+        <div class="border-box">
+          <select name="languages" id="lang" (change)="onChanges($event)">
+            <option value="">Sort</option>
+            <option value="viewss">Sort(by downloads)</option>
+            <option value="atoz">Sort(A-Z title)</option>
+          </select>
+        </div>
+      </form>
+        <div class="border-box d-inline-block ms-3" *ngIf="categoriesAllData.data.length && showData ">
           <a target="_self" style="cursor: pointer;" (click)="slideAll()">View All ({{totalCount}})</a>
         </div>
 
-        <form class="d-inline-block ms-3" [formGroup]="form"
-          *ngIf="categoriesAllData.data.length && showData">
-          <div class="border-box">
-            <select name="languages" id="lang" (change)="onChanges($event)">
-              <option value="">Sort</option>
-              <option value="viewss">Sort(by downloads)</option>
-              <option value="atoz">Sort(A-Z title)</option>
-            </select>
-          </div>
-        </form>
+       
 
       </div>
     </div>
@@ -38,10 +38,9 @@
     <!-- {{categoriesAllData.data | json}} -->
     <div class="row">
       <!-- <div class="col-md-12 "> -->
-        <div class="col-md-12 product-video-box" id="galleries-list">
-
-
-          <div class="col-md-12" *ngIf="categoriesAllData.data.length && showData">
+        <div class="col-12 " id="galleries-list">
+          <div class="product-video-box">
+          <div *ngIf="categoriesAllData.data.length && showData">
             <div class="wrapper">
 
               <owl-carousel-o [options]="customOptions" *ngIf="categoriesAllData.data.length > 4">
@@ -51,7 +50,7 @@
                       <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
                           width="100%" alt="product-img">
                       </div>
-                      <div class="thumbnail-title"> {{slide.title | titlecase}}</div>
+                      <div class="thumbnail-title"> {{slide.title}}</div>
                     </a>
                     <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
                     <div class="row justify-content-between">
@@ -76,11 +75,17 @@
                     <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
                         width="100%" alt="product-img">
                     </div>
-                    <div class="thumbnail-title"> {{slide.title | titlecase}}</div>
+                    <div class="thumbnail-title"> {{slide.title }}</div>
 
                   </a>
                   <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
-                  <div class="sub-title-2">{{slide.slide_count}} slides <span> {{slide.download_count}} downloads</span>
+                  <div class="row justify-content-between">
+                    <div class="col-auto">
+                      <div class="sub-title-2">{{slide.slide_count}} slides </div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="sub-title-2">{{slide.download_count}} downloads</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -92,6 +97,7 @@
             <h3 class="error-msg">No Matching Records Found</h3>
           </div>
         </div>
+      </div>
       <!-- </div> -->
     </div>
   </div>

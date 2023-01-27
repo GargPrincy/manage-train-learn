@@ -12,5 +12,4 @@ a{text-decoration: none;}
   text-overflow: ellipsis;
   overflow: hidden;
   display: inherit;
-  text-transform: capitalize;
 }

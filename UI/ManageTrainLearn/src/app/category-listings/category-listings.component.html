@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class=" product-video-box" id="galleries-list">
+        <div class="pt-0 product-video-box" id="galleries-list">
 
           <div class="" *ngIf="
             showContent &&
@@ -23,11 +23,11 @@
             <div class="wrapper">
 
               <div class="row topic-lists">
-                <div class="col-md-12" id="{{ i }}" *ngFor="let slide of categoriesAllDataCategoryListing.topicDetails;
+                <div class="col-md-12 mainAll" [ngClass]="{'mainAll': !noData}" id="{{ i }}" *ngFor="let slide of categoriesAllDataCategoryListing.topicDetails;
                     let i = index">
-                  <div class="mainAll" [ngClass]="{'mainAll': !noData}">
+                  <div>
                     <span>
-                      <div class="row justify-content-between align-items-center mb-3"
+                      <div class="row justify-content-between align-items-center mb-3 border-bottom1"
                         *ngIf="slide.total_slides > 4 && slide.total_slides > 0">
 
                         <div class="col-lg-auto col-12 col-lg-0 mb-3" *ngIf="showCurrentTopic != ''">
@@ -71,7 +71,7 @@
                                   alt="product-img" />
                               </div>
                               <div class="thumbnail-title">
-                                {{ slides.title | titlecase}}
+                                {{ slides.title }}
                               </div>
                             </a>
 
@@ -91,8 +91,8 @@
                         </ng-container>
                       </owl-carousel-o>
 
-                      <div *ngIf="slide.total_slides <= 4">
-                        <div class="row justify-content-between align-items-center mb-3 border-bottom1"
+                      <div *ngIf="slide.total_slides <= 4 && slide.slides?.length">
+                        <div class="row justify-content-between align-items-center mb-3 border-bottom1 border-bottom2"
                           *ngIf="slide.total_slides <= 4 && slide.total_slides > 0">
 
                           <div class="col-lg-auto col-12 col-lg-0 mb-3" *ngIf="showCurrentTopic != ''">
@@ -130,7 +130,7 @@
                                 <img style="object-fit: fill" src="{{ slidess.thumbnail }}" height="250px" width="100%"
                                   alt="product-img" />
                               </div>
-                              <div class="thumbnail-title">{{ slidess.title | titlecase }}</div>
+                              <div class="thumbnail-title">{{ slidess.title }}</div>
                             </a>
                             <div class="sub-title-1">{{ slidess.producer | titlecase}}</div>
                             <div class="row justify-content-between">

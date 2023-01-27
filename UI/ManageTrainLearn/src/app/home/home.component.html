@@ -1,12 +1,12 @@
 <section class="middle-part">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col-xxl-5 col-lg-6">
+            <div class="col-xxl-6 col-lg-6">
                 <div class="right-logo">
                     <img src="assets/images/logo2.png" width="100%" alt="logo 2">
                 </div>
                 <div class="right-text mt-3"> “{{homeAllData.info?.subTitle}}” </div>
-                <div class="right-btn ">
+                <div class="right-btn text-center">
                     <div class="btn-1">
                         <a class="btn" href="" routerLink="/slide-listings/top20s">View Our Top 20 Slides</a>
                     </div>
@@ -15,15 +15,26 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6">
+            <div class="col-xl-6 col-lg-6 mt-lg-0 mt-4">
                 <div class="right-box ">
                     <div class="top-hadding">
                         <div class="box-title" id="homePageTextBoardHeading">{{homeAllData.info?.content}}</div>
                     </div>
                     <div class="overflow scroller">
-                        <div id="homePageTextBoard">
-                            <div class="row_one bounceInLeft"  *ngFor="let topCat of homeAllData.top_categories;let i = index"  
-                            [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'"><span class="cate-no">{{i+1}}.</span>{{topCat.content}}</div>
+                        <div id="homePageTextBoard" class="text-center">
+                            <!-- <div class="row_one bounceInLeft"  *ngFor="let topCat of homeAllData.top_categories;let i = index"  
+                            [ngClass]="i % 2 ? 'row_two bounceInRight' : 'row_one bounceInLeft'"><span class="cate-no">{{i+1}}.</span>{{topCat.content}}</div> -->
+                            <div class="row_one bounceInLeft">202 One-Day Soft Skills Course Plans</div>
+                            <div class="row_two bounceInRight">202 Course Topics</div>
+                            <div class="row_one bounceInLeft">993 One-Minute Tips</div>
+                            <div class="row_two bounceInRight">800 Soft Skills Course Exercises</div>
+                            <div class="row_one bounceInLeft">500 Soft Skills Worksheets</div>
+                            <div class="row_two bounceInRight">202 Self-assessment forms</div>
+                            <div class="row_one bounceInLeft">202 Presentations in the Professional Development Programme</div>
+                            <div class="row_two bounceInRight">200 Icebreaker exercises</div>
+                            <div class="row_one bounceInLeft">40 Ready-to-use Teambuilder games</div>
+                            <div class="row_two bounceInRight">350 Stories that Coach</div>
+                            <div class="row_one bounceInLeft">... and Many More</div>
                         </div>
                     </div>
                 </div>
@@ -32,7 +43,7 @@
     </div>
 </section>
 <div class="modal settings-modal play-modal" id="playModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content ">
         <!-- Modal Header -->
         <div class="modal-header">
@@ -72,7 +83,7 @@
     </div>
   </div>
   <div class="modal settings-modal" id="settings">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
@@ -102,7 +113,7 @@
     </div>
   </div>
   <div class="modal settings-modal" id="tmc">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered" >
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">

@@ -55,12 +55,12 @@
 
               <div class="row">
 
-                <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+                <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
                   <a href="" routerLink="/slide/{{slide.id}}">
                     <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
                         width="100%" alt="product-img">
                     </div>
-                    <div class="thumbnail-title"> {{slide.title | titlecase}}</div>
+                    <div class="thumbnail-title"> {{slide.title}}</div>
                   </a>
                   <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
                   <div class="row justify-content-between">

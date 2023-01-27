@@ -22,6 +22,7 @@ export class CategoryListingsComponent {
   public showContent:boolean=false;
   public loading:boolean = true;
   public showCurrentTopic:string = "";
+  // public showCurrentSlide:any = [];
   public categoriesAllDataCategoryListing:any = [];
   public noData:boolean=false;
     customOptions: OwlOptions = {
@@ -130,6 +131,7 @@ export class CategoryListingsComponent {
     console.log(id,"ddddd");
     if( this.categoriesAllDataCategoryListing.topicDetails[id]){
       this.showCurrentTopic = this.categoriesAllDataCategoryListing.topicDetails[id].topic_name;
+      // this.showCurrentSlide = this.categoriesAllDataCategoryListing.topicDetails[id].slides;
       this.showContent = true; 
     }
   }

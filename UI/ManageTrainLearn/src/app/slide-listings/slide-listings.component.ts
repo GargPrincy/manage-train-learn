@@ -33,11 +33,11 @@ export class SlideListingsComponent {
   totalCount:number = 0;
   limit: number = 10; // <==== Edit this number to limit API results
   customOptions: OwlOptions = {
-    autoplay: true,
+    autoplay: false,
     rewind: false /* use rewind if you don't want loop */,
-    margin: 20,    items:5,       dots:false,    autoWidth:false,    autoHeight:false,       slideTransition:'linear',
+    margin: 20,    items:5, slideBy:4,      dots:false,    autoWidth:false,    autoHeight:false,       slideTransition:'linear',
     navText:["   <span class='slide-left'> <img src='assets/images/arrow-left.png' width='59px' alt='arrow-left arrow-a'>  </span>","<span class='slide-right'><img src='assets/images/arrow-right.png' width='59px' alt='arrow-right arrow-a'> </span>"],
-    animateOut: 'fadeOut', animateIn: 'fadeIn', autoplayTimeout: 7000,    smartSpeed: 800,
+    animateOut: 'fadeOut', animateIn: 'fadeIn',navSpeed:100,
     responsive: {
       0: {
         items: 1 
@@ -52,7 +52,8 @@ export class SlideListingsComponent {
         items: 4
       }
     },
-    nav: true
+    nav: true,
+    stagePadding:1
   };
   public loading:boolean = true;
   public categoriesAllData:any = [];

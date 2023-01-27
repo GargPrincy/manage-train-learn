@@ -1,6 +1,13 @@
 .pdf-viewer { 
-   width: 100%;
-   display: block;
-   margin: 0 auto;
-   aspect-ratio: 1 / 1.4142;
- }
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  overflow-x: hidden;
+}
+.pdf-viewer canvas{
+  width: 100% !important;
+}
+.pdfViewer .page canvas{
+    width: 100% !important;
+}
