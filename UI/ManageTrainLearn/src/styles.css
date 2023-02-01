@@ -538,7 +538,7 @@ background: #015855;
     width: 100%;
     height: auto;
     background: #038b87;
-    border:2px solid #015855;
+    border:2px solid #bbdb9e;
     margin-bottom: 24px;
     padding: 12px 15px;
 }
@@ -642,12 +642,12 @@ right-logo pulse
 
 .btn-close.popup-close {
     opacity: 1;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     position: absolute;
-    top: -22px;
-    right: -22px;
+    top: -28px;
+    right: -28px;
 }
 
 
@@ -1090,6 +1090,10 @@ a {
 .raund-modal .modal-dialog {
     max-width: 480px;
 }
+
+#raund-modalss.raund-modal .modal-dialog {
+    max-width: 400px !important;
+}
 #raund-modalsss .ineer-popup-content{
     word-break: break-word;
 }
@@ -1157,7 +1161,7 @@ font-size: 32px;
 
 .cat-box-mian {
     width: 100%;
-    border:2px solid #fff;
+    border:2px solid #bbdb9e;
     padding: 15px 20px;
     min-height: 375px;
     background: #076564;
@@ -1262,7 +1266,7 @@ font-size: 32px;
     height: auto;
     min-height: 375px;
     background: #000;
-    border: 2px solid #fff;
+    border: 2px solid #bbdb9e;
 }
 .border-box select:focus{
     outline: none;
@@ -1354,7 +1358,7 @@ font-size: 32px;
 #galleries-list .slide-left,
 #galleries-list .slide-right{
 position: absolute;
-    top: calc(50% - 28px);
+    top: calc(50% - 55px);
     margin: 0;
     transform: translateY(-50%);
 }
@@ -1430,7 +1434,7 @@ position: absolute;
     font-weight: 400;
     font-size: 14px;
     text-align: left;
-    color: #fff;
+    color: #015855;
     width: auto;
     text-transform: capitalize;
 }
@@ -1439,7 +1443,7 @@ position: absolute;
     font-weight: 400;
     font-size: 14px;
     text-align: right;
-    color: #fff;
+    color: #015855;
     width: auto;
     text-transform: capitalize;
     line-height: 21px;
@@ -1465,6 +1469,7 @@ position: absolute;
 
 .sub-title-2 span {
     float: right;
+ 
 }
 
 html {
@@ -1557,7 +1562,7 @@ button.accordion {
     width: calc(100% - 20px);
     content: '';
     left: 0;
-    border-top: 2px solid #1feddc;
+    border-top: 2px solid #bbdb9e;
     margin: auto;
     right: 0;
 }
@@ -1645,7 +1650,7 @@ button.accordion {
     height: 4px;
     display: block;
     z-index: 4;
-    background: #1feddc;
+    background: #015855;
     border-radius: 0 50px 50px 0;
 }
 
@@ -1753,6 +1758,16 @@ button.accordion {
     #galleries-list .slide-left {
         left: -30px;
     }
+
+    .border-box select option{
+        font-size: 14px;
+    }
+    .cat_sort{
+        width: 120px;
+    }
+    .border-box a {
+        padding: 0 10px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -1815,6 +1830,9 @@ button.accordion {
 
     .middle-part.video-list {
         padding: 40px 0px;
+    }
+    .cat_sort{
+        width: auto;
     }
 }
 

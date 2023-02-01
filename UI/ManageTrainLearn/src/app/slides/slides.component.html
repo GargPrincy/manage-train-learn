@@ -46,7 +46,7 @@
           </div>
 
           <div class="col-xxl-5 col-xl-4 order-1 order-xl-2 mb-xl-0 mb-4 mx-xxl-auto">
-                    <div id="youtube-videos" class="youtube-videos position-relative h-100" *ngIf="slideData.tags" >
+                    <div id="youtube-videos" class="youtube-videos position-relative h-100" *ngIf="slideData.status" >
                        <div class="category-full-video h-100">
                          <pdf-viewer class="" [src]='slideId'
                          [original-size]="true"
@@ -85,6 +85,9 @@
           <div class="col-xxl-3 col-xl-4  order-xl-3 order-2  right-category bounceInRight">
             <div class="ps-xxl-0 ps-xl-4 ps-0 h-100">
             <div class="cat-box-mian cat-right">
+
+              <div class="row align-items-center h-100 g-0">
+                <div class="col-12">
              <div class="cat-box-right">
               
               <a href="" routerLink="/slide-listings/{{slideData.topic}}?topic">
@@ -92,7 +95,8 @@
                <div class="right-btnn">View other topic slides</div> 
               </a>
             </div>
-            
+          </div>
+          <div class="col-12">
              <div class="cat-box-right">
             
               <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalsss"> 
@@ -100,15 +104,18 @@
                 <div class="right-btnn"> Copy Embed Code</div>
                 </a>
               </div>
+            </div>
 
+              <div class="col-12">
               <div class="cat-box-right"> 
                 
                 <a (click)="downloadSlide(slideData.id)" data-bs-toggle="modal" data-bs-target="#raund-modalsse">
                   <img src="assets/images/download.png" alt="" />
-                  <div class="right-btnn">Download this slide</div>
+                  <div class="right-btnn">Download this slide presentation</div>
                 </a>
               </div>
-
+            </div>
+              <div class="col-12">
               <div class="cat-box-right"> 
                 
                 <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalss">   
@@ -116,6 +123,8 @@
                   <div class="right-btnn">Share PowerPoint</div>
                 </a>
               </div>
+            </div>
+            </div>
 
 
                 <!-- <div class="cat-btn text-center">
@@ -165,7 +174,7 @@
             <div class="modal-body modal-inner-box  ">
                 <div class="model-content">
                 <h3>Share PowerPoint</h3>
-                <div class="ineer-popup-content">The link to this page has now been copied to the user's clipboard for users to share this with others.</div>
+                <div class="ineer-popup-content">The link to this page has now been copied to your clipboard for you to share with others.</div>
                 <div class="ineer-popup-close-btn">
                           <button data-bs-dismiss="modal" class="btn" >Close</button>
                          </div>

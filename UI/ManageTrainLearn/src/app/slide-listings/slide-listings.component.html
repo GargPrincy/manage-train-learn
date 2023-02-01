@@ -9,18 +9,18 @@
       </div>
 
 
-      <div class="col-auto">
+      <div class="col-lg-auto col-md-7 col-auto">
         <h2 class="category-topic m-0">{{showKeyword | titlecase}}</h2>
       </div>
 
-      <div class="col-auto">
+      <div class="col-lg-auto col-md-5 col-auto">
         <form class="d-inline-block" [formGroup]="form"
         *ngIf="categoriesAllData.data.length && showData">
         <div class="border-box">
-          <select name="languages" id="lang" (change)="onChanges($event)">
+          <select class="cat_sort" name="languages" id="lang" (change)="onChanges($event)">
             <option value="">Sort</option>
             <option value="viewss">Sort(by downloads)</option>
-            <option value="atoz">Sort(A-Z title)</option>
+            <option value="atoz">Sort(by A-Z title)</option>
           </select>
         </div>
       </form>
@@ -52,10 +52,10 @@
                       </div>
                       <div class="thumbnail-title"> {{slide.title}}</div>
                     </a>
-                    <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
+                    <div class="sub-title-1 text-white"> {{slide.producer | titlecase}}</div>
                     <div class="row justify-content-between">
                       <div class="col-auto">
-                        <div class="sub-title-2">{{slide.slide_count}} slides </div>
+                        <div class="sub-title-1">{{slide.slide_count}} slides </div>
                       </div>
                       <div class="col-auto">
                         <div class="sub-title-2">{{slide.download_count}} downloads</div>
@@ -70,7 +70,7 @@
               </owl-carousel-o>
               <div class="row" *ngIf="categoriesAllData.data.length <= 4">
 
-                <div class="col-md-3" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+                <div class="col-lg-3 col-md-6" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
                   <a href="" routerLink="/slide/{{slide.id}}">
                     <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
                         width="100%" alt="product-img">
@@ -78,10 +78,10 @@
                     <div class="thumbnail-title"> {{slide.title }}</div>
 
                   </a>
-                  <div class="sub-title-1"> {{slide.producer | titlecase}}</div>
+                  <div class="sub-title-1 text-white"> {{slide.producer | titlecase}}</div>
                   <div class="row justify-content-between">
                     <div class="col-auto">
-                      <div class="sub-title-2">{{slide.slide_count}} slides </div>
+                      <div class="sub-title-1">{{slide.slide_count}} slides </div>
                     </div>
                     <div class="col-auto">
                       <div class="sub-title-2">{{slide.download_count}} downloads</div>

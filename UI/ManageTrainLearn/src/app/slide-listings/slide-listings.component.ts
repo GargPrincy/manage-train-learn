@@ -99,7 +99,7 @@ export class SlideListingsComponent {
           } else if(this.searchWord != ""){
             this.categoriesAllData= [];
             this.getAllSlideListing(this.searchWord);
-            this.showKeyword =  `Search Result's of  "${this.searchWord}"`;
+            this.showKeyword =  `Search Results of  "${this.searchWord}"`;
             this.titleService.setTitle(this.showKeyword);
 
           }  
@@ -129,7 +129,7 @@ export class SlideListingsComponent {
           this.titleService.setTitle(this.showKeyword);
         }
         else{
-          this.showKeyword =  `Search Result's of  "${this.searchWord}"`;
+          this.showKeyword =  `Search Results of  "${this.searchWord}"`;
           this.titleService.setTitle(this.showKeyword);
         }     
 
@@ -186,7 +186,7 @@ export class SlideListingsComponent {
 
         }
         else{
-          this.showKeyword =  `Search Result's of  "${this.searchWord}"`;
+          this.showKeyword =  `Search Results of  "${this.searchWord}"`;
           this.titleService.setTitle(this.showKeyword);
 
         }     

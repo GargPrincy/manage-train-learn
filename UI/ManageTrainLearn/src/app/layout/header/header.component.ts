@@ -74,20 +74,26 @@ export class HeaderComponent {
     this.checkoutForm.reset();
   }
   public onSubmit() {
-    console.log("ay",this.checkoutForm.value);
+    console.log('Valid?---', this.checkoutForm); // true or false  this.checkoutForm   
+    if(this.checkoutForm.value.searchKey !=""){
 
-    let sessionId =   this.getRandomIntInclusive(1,9999999999);
-    let navigationExtras = {
-      queryParams: { 'session_id': sessionId , searchKey:this.checkoutForm.value.searchKey},
-      fragment: 'anchor'
-    };
+      console.log("ay",this.checkoutForm.value);
+      let sessionId =   this.getRandomIntInclusive(1,9999999999);
+      let navigationExtras = {
+        queryParams: { 'session_id': sessionId , searchKey:this.checkoutForm.value.searchKey},
+        fragment: 'anchor'
+      };
+  
+      // Navigate to the login page with extras
+      this.router.navigate(['/slide-listings',this.checkoutForm.value.searchKey]);
+      // if(this.checkoutForm.value.searchKey !="" ){
+        const searchValue:any = this.checkoutForm.value.searchKey
+        this.getAllSlideListing(searchValue);
+      // }
 
-    // Navigate to the login page with extras
-    this.router.navigate(['/slide-listings',this.checkoutForm.value.searchKey]);
-    if(this.checkoutForm.value.searchKey !="" ){
-      const searchValue:any = this.checkoutForm.value.searchKey
-      this.getAllSlideListing(searchValue);
     }
+
+   
 
   }
   

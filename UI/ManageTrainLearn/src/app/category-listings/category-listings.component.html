@@ -30,23 +30,23 @@
                       <div class="row justify-content-between align-items-center mb-3 border-bottom1"
                         *ngIf="slide.total_slides > 4 && slide.total_slides > 0">
 
-                        <div class="col-lg-auto col-12 col-lg-0 mb-3" *ngIf="showCurrentTopic != ''">
+                        <div class="col-lg-auto col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
                           <h2 class="category-topic m-0">
                             {{ slide.topic_name | titlecase }}
                           </h2>
                         </div>
 
 
-                        <div class="col-lg-auto col-12">
+                        <div class="col-lg-auto col-md-5 col-12">
                           <form class="d-inline-block me-3" [formGroup]="form">
                             <div class="border-box border-border">
-                              <select name="languages" id="lang" (change)="onChanges($event, i)">
+                              <select class="cat_sort" name="languages" id="lang" (change)="onChanges($event, i)">
                                 <option value="">Sort</option>
                                 <option value="viewss">
                                   Sort (by downloads)
                                 </option>
                                 <option value="atoz">
-                                  Sort (A-Z title)
+                                  Sort (by A-Z title)
                                 </option>
                               </select>
                             </div>
@@ -75,7 +75,7 @@
                               </div>
                             </a>
 
-                            <div class="sub-title-1">{{ slides.producer | titlecase}}</div>
+                            <div class="sub-title-1 text-white">{{ slides.producer | titlecase}}</div>
 
                             <div class="row justify-content-between">
 
@@ -95,7 +95,7 @@
                         <div class="row justify-content-between align-items-center mb-3 border-bottom1 border-bottom2"
                           *ngIf="slide.total_slides <= 4 && slide.total_slides > 0">
 
-                          <div class="col-lg-auto col-12 col-lg-0 mb-3" *ngIf="showCurrentTopic != ''">
+                          <div class="col-lg-auto col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
                             <h2 class="category-topic m-0">
                               <!-- {{ showCurrentTopic }} -->
                               {{ slide.topic_name | titlecase }}
@@ -103,13 +103,13 @@
                           </div>
 
 
-                          <div class="col-lg-auto col-12">
+                          <div class="col-lg-auto col-md-5 col-12">
                             <form class="d-inline-block me-3" [formGroup]="form">
                               <div class="border-box border-border">
-                                <select name="languages" id="lang" (change)="onChanges($event, i)">
+                                <select class="cat_sort" name="languages" id="lang" (change)="onChanges($event, i)">
                                   <option value="">Sort</option>
                                   <option value="viewss">Sort (by downloads)</option>
-                                  <option value="atoz">Sort (A-Z title)</option>
+                                  <option value="atoz">Sort (by A-Z title)</option>
                                 </select>
                               </div>
 
@@ -132,7 +132,7 @@
                               </div>
                               <div class="thumbnail-title">{{ slidess.title }}</div>
                             </a>
-                            <div class="sub-title-1">{{ slidess.producer | titlecase}}</div>
+                            <div class="sub-title-1 text-white">{{ slidess.producer | titlecase}}</div>
                             <div class="row justify-content-between">
 
                               <div class="col-auto">

@@ -11,3 +11,6 @@
 .pdfViewer .page canvas{
     width: 100% !important;
 }
+.pdfViewer .page{
+  margin-bottom: 0 !important;
+}
