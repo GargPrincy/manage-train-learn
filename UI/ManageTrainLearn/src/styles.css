@@ -158,7 +158,6 @@ main {
 
 .right-text {
     font-size: 24px;
-    width: 90%;
     font-family: 'Lato', sans-serif;
     font-weight: 900;
     color: #015855;
@@ -290,6 +289,23 @@ main {
 .ng2-pdf-viewer-container{
     overflow-x: hidden !important;
 }
+
+.tooltip .tooltip-inner{
+    background-color: #076564;
+    color: #fff;
+    font-size: 14px;
+  
+}
+.tooltip{
+    opacity: 1 !important;
+}
+.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #076564 !important;
+}
+
+.pdfViewer .page canvas{
+    padding-right:12px; 
+  }
 .scroller {
     scrollbar-width: thin;
     scrollbar-color: #076564 #076564;
@@ -305,7 +321,7 @@ body::-webkit-scrollbar-track,
     background: #076564;
 
 }
-.ng2-pdf-viewer-containe {
+.ng2-pdf-viewer-container {
     overflow-x: hidden !important;
 }
 .ng2-pdf-viewer-container::-webkit-scrollbar-thumb,
@@ -779,6 +795,10 @@ a {
     animation: loader 1.2s linear infinite;
 }
 
+.error-msg {
+    text-align: center;
+}
+
 @keyframes loader {
     0% {
         transform: rotate(0deg);
@@ -1130,7 +1150,7 @@ a {
     background-image: url(assets/images/center_green.png);
     font-size: 21px;
     padding: 8px 10px 10px;
-        color: #4b1320;
+        color: #6b3200;
     text-shadow: none;
 }
 
@@ -1202,7 +1222,14 @@ font-size: 32px;
     margin: 0px;
     font-weight: 500;
 }
-
+.des-text{
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
 .cat-box-block .sub-block {
     font-size: 16px;
     color: #310405;
@@ -1254,7 +1281,9 @@ font-size: 32px;
 .cat-box-mian.cat-right {
     padding-bottom: 0px;
 }
-
+.pdfViewer.removePageBorders .page{
+    margin-bottom: 0 !important;
+}
 .right-category {
     float: right;
 }
@@ -1673,7 +1702,12 @@ button.accordion {
 
 @media screen and (max-width:1200px) {
 
-
+    .min-category-page .row-one .col-xl-3:nth-child(odd) a{
+        color: #bbdb9e !important;
+    }
+    .min-category-page .row-one .col-xl-3  a{
+        color: #fff !important;
+    }
 
 .header-search, .right-user-id,
 .header-categories {
@@ -1716,7 +1750,28 @@ button.accordion {
 
 
 @media screen and (max-width: 991px) {
-
+    .min-category-page .row-one .col-xl-3:nth-child(odd) a{
+        color: #fff !important;
+    }
+    .min-category-page .row-one .col-xl-3:nth-child(33) a,
+    .min-category-page .row-one .col-xl-3:nth-child(29) a,
+    .min-category-page .row-one .col-xl-3:nth-child(28) a,
+    .min-category-page .row-one .col-xl-3:nth-child(24) a,
+    .min-category-page .row-one .col-xl-3:nth-child(25) a,
+    .min-category-page .row-one .col-xl-3:nth-child(21) a,
+    .min-category-page .row-one .col-xl-3:nth-child(20) a,
+    .min-category-page .row-one .col-xl-3:nth-child(17) a,
+    .min-category-page .row-one .col-xl-3:nth-child(16) a,
+    .min-category-page .row-one .col-xl-3:nth-child(13) a,
+    .min-category-page .row-one .col-xl-3:nth-child(12) a,
+    .min-category-page .row-one .col-xl-3:nth-child(9) a,
+    .min-category-page .row-one .col-xl-3:nth-child(8) a,
+    .min-category-page .row-one .col-xl-3:nth-child(5) a,
+    .min-category-page .row-one .col-xl-3:nth-child(4) a,
+    .min-category-page .row-one .col-xl-3:nth-child(1) a{
+        color: #bbdb9e !important;
+    }
+    
     .header-categories {
         width: 100%;
     }

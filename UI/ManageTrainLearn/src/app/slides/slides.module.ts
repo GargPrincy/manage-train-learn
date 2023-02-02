@@ -9,10 +9,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SlideComponent } from './slides.component';
 // import { NgImageSliderModule } from 'ng-image-video-gallery';
 
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [SlideComponent],
   imports: [
     CommonModule,
+    NgbTooltipModule,
     // YouTubePlayerModule,
     PdfViewerModule,
     SlidesRoutingModule,

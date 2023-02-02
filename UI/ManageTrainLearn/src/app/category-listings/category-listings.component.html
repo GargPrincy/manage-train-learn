@@ -30,7 +30,7 @@
                       <div class="row justify-content-between align-items-center mb-3 border-bottom1"
                         *ngIf="slide.total_slides > 4 && slide.total_slides > 0">
 
-                        <div class="col-lg-auto col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
+                        <div class="col-xxl-8 col-lg-7 col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
                           <h2 class="category-topic m-0">
                             {{ slide.topic_name | titlecase }}
                           </h2>
@@ -95,7 +95,7 @@
                         <div class="row justify-content-between align-items-center mb-3 border-bottom1 border-bottom2"
                           *ngIf="slide.total_slides <= 4 && slide.total_slides > 0">
 
-                          <div class="col-lg-auto col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
+                          <div class="col-xxl-8 col-lg-7 col-md-7 col-12 col-lg-0 md-0" *ngIf="showCurrentTopic != ''">
                             <h2 class="category-topic m-0">
                               <!-- {{ showCurrentTopic }} -->
                               {{ slide.topic_name | titlecase }}

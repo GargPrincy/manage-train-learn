@@ -20,6 +20,7 @@ export class SlideComponent {
   public slideEmbed:string = "";
   page: number = 1;
   totalPages: number = 0;
+  public showGuestUserName:any = "";
   isLoaded: boolean = false;
   public downCount: number = 0;
   limitDown: number = 9;
@@ -53,6 +54,9 @@ export class SlideComponent {
         console.log(tag, 'tag-princy')
         // tag.src = "https://www.youtube.com/iframe_api";
         document.body.appendChild(tag);
+        if(this.showGuestUserName == "" || this.showGuestUserName == null) {
+          this.showGuestUserName = localStorage.getItem("guestUserName");
+        }
 
         
         
@@ -95,6 +99,14 @@ export class SlideComponent {
     //   );
      
     // }
+
+    ngAfterViewChecked() {
+     
+      if(this.showGuestUserName == "" || this.showGuestUserName == null) {
+        this.showGuestUserName = localStorage.getItem("guestUserName");
+      }
+      //We loading the player script on after view is loaded
+    }
     
     private getData(slideId:number) {
       console.log('s-priny-gargggggggggggggggggggg', slideId)

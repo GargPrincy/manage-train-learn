@@ -25,8 +25,8 @@
                   </div>
                   <div class="cat-box-block">
                     <div class="cat-box-block-inner">
-                      <h3>Producer/Presenter:</h3>
-                      <div class="sub-block">{{slideData.producer}}</div>
+                      <h3>Total Downloads:</h3>
+                      <div class="sub-block">{{slideData.download_count}}</div>
                     </div>
                   </div>  
                   <div class="cat-box-block">
@@ -37,8 +37,11 @@
                   </div>  
                   <div class="cat-box-block mb-0">
                     <div class="cat-box-block-inner">
-                    <h3>Total Downloads:</h3>
-                    <div class="sub-block">{{slideData.download_count}}</div>
+                    <h3>Description:</h3>
+                    <div class="sub-block">
+                      <ng-template #tipContent>{{slideData.description}}</ng-template>
+                      <p class="des-text m-0" [ngbTooltip]="tipContent">{{slideData.description}}</p>
+                    </div>
                   </div>
                 </div> 
               </div>
@@ -116,9 +119,9 @@
               </div>
             </div>
               <div class="col-12">
-              <div class="cat-box-right"> 
+              <div class="cat-box-right" > 
                 
-                <a href="" data-bs-toggle="modal" data-bs-target="#raund-modalss">   
+                <a href=""  (click)="shareVideoCopytext(slideData.url)"  data-bs-toggle="modal" data-bs-target="#raund-modalss">   
                   <img src="assets/images/share-btn.png" alt="" />
                   <div class="right-btnn">Share PowerPoint</div>
                 </a>
@@ -189,7 +192,7 @@
        
             <div class="modal-body modal-inner-box  ">
                 <div class="model-content">
-                <h3>Copy Embed Code</h3>
+                <h3>Embed Code</h3>
                 <div class="ineer-popup-content">
                   {{slideEmbed}}
                  </div>
@@ -227,14 +230,14 @@
         </div>
       </div> -->
 
-      <div class="modal raund-modal" id="raund-modalsse" *ngIf= "slideData.download_count">
+      <div class="modal raund-modal" id="raund-modalsse" *ngIf= "slideData.download_count >= 0">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
        
             <div class="modal-body modal-inner-box  ">
                 <div class="model-content">
                 <h3>Download Slide</h3>
-                <div class="ineer-popup-content">"{{slideData.producer}}, you have now downloaded {{slideData.today_download_count}} of downloads already in the 24 hours since the first download slides today. 
+                <div class="ineer-popup-content">"{{showGuestUserName}}, you have now downloaded {{slideData.today_download_count}} of downloads already in the 24 hours since the first download slides today. 
                   You have {{downloadCountID}} downloads left in your 24-hour quota."</div>
                 <div class="ineer-popup-close-btn">
                           <button data-bs-dismiss="modal" class="btn" >Close</button>
