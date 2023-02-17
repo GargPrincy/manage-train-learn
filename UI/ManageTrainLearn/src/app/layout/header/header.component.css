@@ -1,0 +1,23 @@
+asl-google-signin-button{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+.btn-social-media-box .gmail-login{
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid #EA4335;
+    background: #BB001B;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 500;
+    height: 50px;
+    box-shadow: inset 0 0 4px #0006;
+    width: 50px;
+    text-align: center;
+    line-height: 46px;
+    display: block;
+}

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +23,6 @@ import { SlideListingsComponent } from './slide-listings/slide-listings.componen
 import { SlidesModule } from './slides/slides.module';
 import { CategoryListingsComponent } from './category-listings/category-listings.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +41,7 @@ import { CategoryListingsComponent } from './category-listings/category-listings
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    SocialLoginModule,
+    // SocialLoginModule,
     CarouselModule,
     CommonModule,
     BrowserAnimationsModule,
@@ -58,11 +57,12 @@ import { CategoryListingsComponent } from './category-listings/category-listings
           {
             id: GoogleLoginProvider.PROVIDER_ID,
           //  provider: new GoogleLoginProvider('308041842089-utsn90t5mu6s442r7j7htpvbdbll5t18.apps.googleusercontent.com')
-            provider: new GoogleLoginProvider('308041842089-utsn90t5mu6s442r7j7htpvbdbll5t18.apps.googleusercontent.com-1')
+           provider: new GoogleLoginProvider('192654719663-97kq740ii1lcbl0buqiv8e51624c28tp.apps.googleusercontent.com')
+            // provider: new GoogleLoginProvider('308041842089-utsn90t5mu6s442r7j7htpvbdbll5t18.apps.googleusercontent.com-1')
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('503401308437913')
+            provider: new FacebookLoginProvider('739091271259555')
           }
         ],
         onError: (err) => {

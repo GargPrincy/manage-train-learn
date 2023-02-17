@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: "slide/:slideParamId",component: SlideComponent 
   },
-  { path: 'login', component: SocialLoginComponent },
+  // { path: 'login', component: SocialLoginComponent },
   { path: '**', pathMatch: 'full',component: PagenotfoundComponent },
   { path: 'search', component: SearchComponent }
 

@@ -115,12 +115,13 @@ export class SlideListingsService {
         );
   }
   
-  public getSlideRecord(slideId:number):Observable<HomeList[]> {
+  public getSlideRecord(slideId:number, emailSocial:any):Observable<HomeList[]> {
     var param = new Dictionary<any>();
     param.add("searchKey", slideId)
     console.log(slideId,"dfsdf");
+    console.log("token-slide-detail", emailSocial);
     //const searchDataSend = {"searchKey":searchKeyword};
-    return this._httpService.get<HomeList[]>(API.categories.getSlideDetails.replace('{slideParamId}', slideId.toString()))
+    return this._httpService.get<HomeList[]>(API.categories.getSlideDetails.replace('{slideParamId}', slideId.toString()+ "?email="+ emailSocial))
         .pipe(
             map( r => {
               console.log("in services",r);
@@ -132,28 +133,13 @@ export class SlideListingsService {
             })
         );
   }
-  public reportSlideMissing(slideId:number):Observable<HomeList[]> {
+  public updateSlideDownloadCount(slideId:number, emailSocial:any):Observable<HomeList[]> {
     var param = new Dictionary<any>();
     param.add("searchKey", slideId)
+    console.log("token-idididid", emailSocial);
     console.log(slideId,"dfsdf");
     //const searchDataSend = {"searchKey":searchKeyword};
-    return this._httpService.get<HomeList[]>(API.categories.reportSlideMissing.replace('{slideParamId}', slideId.toString()))
-        .pipe(
-            map( r => {
-              console.log("in services",r);
-              if (r.body?.status){
-                 this.categoryeData = r.body.data ?? [];
-              }
-              return this.categoryeData;
-            })
-        );
-  }
-  public updateSlideDownloadCount(slideId:number):Observable<HomeList[]> {
-    var param = new Dictionary<any>();
-    param.add("searchKey", slideId)
-    console.log(slideId,"dfsdf");
-    //const searchDataSend = {"searchKey":searchKeyword};
-    return this._httpService.get<HomeList[]>(API.categories.updateSlideDownloadCounts.replace('{slideParamId}', slideId.toString()))
+    return this._httpService.get<HomeList[]>(API.categories.updateSlideDownloadCounts.replace('{slideParamId}', slideId.toString() + "?email="+ emailSocial))
         .pipe(
             map( r => {
               console.log("in services",r);

@@ -18,6 +18,9 @@ import { HttpService } from "../common/http.service";
 export class HomeService {
 
   private homeData: HomeList[];
+  private socialData: any;
+  
+  
   public constructor(
     private readonly _httpService: HttpService
   ) {
@@ -37,4 +40,27 @@ export class HomeService {
             })
         );
   }
+
+  public postSocialRecord(userId:any):Observable<HomeList[]> {
+    
+    console.log(userId,"dfsdf");
+    
+    let paramUrl = "?name="+userId.name+"&email="+userId.email;
+
+    return this._httpService.get<HomeList[]>(API.social.socialLogin+paramUrl)
+        .pipe(
+            map( res =>{
+
+              console.log("in services social",res);
+              if (res.body?.status){
+
+                 this.socialData = res.body;
+              }
+              return this.socialData;
+            }
+            )
+        );
+  }
+
+
 }

@@ -40,8 +40,8 @@ export class SocialLoginComponent {
       },
       
     ];*/
-    
 
+    
    }
 
   ngOnInit() {
@@ -53,7 +53,11 @@ export class SocialLoginComponent {
   }
 
   signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    console.log('social')
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
+      console.log('auth-gmail');
+      console.log('auth-gmail', data);
+    });
   }
 
   signInWithFB(): void {
@@ -63,13 +67,18 @@ export class SocialLoginComponent {
       scope: 'email,public_profile',
       auth_type: 'rerequest'
     };
-      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
+    console.log(fbLoginOptions, 'auth-facebook');
+    console.log(FacebookLoginProvider.PROVIDER_ID, 'auth-facebook-proid');
+
+      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID, fbLoginOptions).then(data => {
         console.log(data);
         console.log("princygargarag")
       });
   }
 
-
+  signOut(): void {
+    this.authService.signOut();
+  }
 
   refreshToken(): void {
     this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);

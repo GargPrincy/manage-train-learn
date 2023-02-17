@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SocialAuthService } from  '@abacritt/angularx-social-login';
-import { SocialUser ,FacebookLoginProvider, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+// import { SocialAuthService } from  '@abacritt/angularx-social-login';
+// import { SocialUser ,FacebookLoginProvider, GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { HomeService } from 'src/services/home/home.service';
 //import { IndexModel } from 'src/models/common/index.model';
 import { Title } from '@angular/platform-browser';
@@ -15,8 +15,8 @@ declare var $: any;
 })
 export class HomeComponent {
   
-  public user!: SocialUser;
-  socialUser!: SocialUser;
+  // public user!: SocialUser;
+  // socialUser!: SocialUser;
 
   public isLoggedin: boolean = false;
   public homeAllData:any = [];
@@ -28,7 +28,8 @@ export class HomeComponent {
   
  
 
-  constructor(private authService: SocialAuthService,
+  constructor(
+    // private authService: SocialAuthService,
     private _homeService: HomeService,
     private titleService: Title,
     private formBuilder: FormBuilder
@@ -59,7 +60,6 @@ export class HomeComponent {
       },
       
     ];*/
-    
 
    }
 
@@ -76,7 +76,6 @@ export class HomeComponent {
     } else if(event.target.checked == false){
       localStorage.setItem("soundProp","2" );
     }
-    
   }
 
 
@@ -84,10 +83,12 @@ export class HomeComponent {
     this.titleService.setTitle("MTL Home");
 
    this.getData();
-   this.authService.authState.subscribe((user) => {
-      this.user = user;      
-      this.isLoggedin = (user != null);
-    }); /**/
+  //  this.authService.authState.subscribe((user) => {
+  //     this.user = user;      
+  //     this.isLoggedin = (user != null);
+  //     console.log(this.user, 'user-name');
+
+  //   }); /**/
 
     let soundStatusCheck = localStorage.getItem("soundProp");
 
@@ -96,6 +97,7 @@ export class HomeComponent {
       this.playAudio();
     }
     console.log(soundStatusCheck, "sound-check-status");
+    this.openModelData();
   }
 
   playAudio(){
@@ -122,30 +124,46 @@ export class HomeComponent {
       }
     );
   }
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+  // signInWithGoogle(): void {
+  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  // }
 
-  signInWithFB(): void {
-    const fbLoginOptions = {
-      enable_profile_selector: true,
-      return_scopes: true,
-      scope: 'email,public_profile',
-      auth_type: 'rerequest'
-    };
-      this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
-        console.log(data);
-        console.log("princygargargrag")
-      });
-  }
+  // signInWithFB(): void {
+  //   const fbLoginOptions = {
+  //     enable_profile_selector: true,
+  //     return_scopes: true,
+  //     scope: 'email,public_profile',
+  //     auth_type: 'rerequest'
+  //   };
+  //     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
+  //       console.log(data);
+  //       console.log("princygargargrag")
+  //     });
+  // }
 
 
 
-  refreshToken(): void {
-    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
-  }
+  // refreshToken(): void {
+  //   this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
+  // }
+
   openModelData() { 
-    $('#playModal').modal('hide'); 
-    $('#settingssss').modal('show');   
+    let soundStatusCheck = localStorage.getItem("soundProp");
+    if( soundStatusCheck == "1" ) {
+      this.playAudio();
+      console.log("if");   
+      setTimeout(function(){
+        $("#checkkkd").prop('checked', true); 
+      },800) 
+    } else if( soundStatusCheck == "2" ) {
+      this.pauseAudio();
+      console.log("if");    
+      setTimeout(function(){   
+        $("#checkkkd").prop('checked', false); 
+      },800) 
+    }
+    console.log(soundStatusCheck, "sound-check-status");
+    // $('#playModal').modal('hide'); 
+    // $('#settings').modal('show');  
   }
 }

@@ -11,7 +11,7 @@
                         <a class="btn" href="" routerLink="/slide-listings/top20s">View Our Top 20 Slides</a>
                     </div>
                     <div class="btn-2">
-                        <a class="btn" href=""  data-bs-toggle="modal" data-bs-target="#playModal">Site Settings</a>
+                        <a class="btn" href=""  data-bs-toggle="modal" (click)="openModelData()" data-bs-target="#playModal">Site Settings</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">SETTINGS </h4>
-          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+          <img data-bs-dismiss="modal" class="btn-close popup-close" (click)="openModelData()" src="assets/images/close-btn.png" width="40px" alt="close">
         </div>
         <div class="modal-body modal-inner-box modal-play-box">
           <div class="model-content">
@@ -74,8 +74,8 @@
              
             </div>
             <div class="popup-btn mb-4">
-            <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#settings">Privacy Policy</a>
-            <a class="btn" type="button" href="" data-bs-toggle="modal" data-bs-target="#tmc">Terms and Conditions</a>
+            <a class="btn" type="button" href="" data-bs-toggle="modal" (click)="openModelData()" data-bs-target="#settings">Privacy Policy</a>
+            <a class="btn" type="button" href="" data-bs-toggle="modal" (click)="openModelData()" data-bs-target="#tmc">Terms and Conditions</a>
           </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">PRIVACY POLICY </h4>
-          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+          <img data-bs-dismiss="modal" class="btn-close popup-close" (click)="openModelData()" src="assets/images/close-btn.png" width="40px" alt="close">
         </div>
         <div class="modal-body modal-inner-box  scroller">
           <div class="model-title">
@@ -118,7 +118,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">TERMS & CONDITIONS</h4>
-          <img data-bs-dismiss="modal" class="btn-close popup-close" src="assets/images/close-btn.png" width="40px" alt="close">
+          <img data-bs-dismiss="modal" class="btn-close popup-close" (click)="openModelData()" src="assets/images/close-btn.png" width="40px" alt="close">
         </div>
         <div class="modal-body modal-inner-box  scroller">
           <div class="model-title">
