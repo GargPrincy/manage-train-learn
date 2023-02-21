@@ -1070,27 +1070,74 @@ a {
     line-height: 51px;
     color: #fff;
 }
+.settings-modal .model-content p{
+    color: #fff;
+    font-size: 15px
+}
+.modal-open .modal-backdrop{
+    display: block;
+}
+.modal-backdrop{
+    display: none;
+}
+#tmc .model-content th{
+    vertical-align: top;
+    font-weight:400;
+    font-size: 15px;
+}
+#tmc .model-content table{
+    margin:10px 0;
+}
+#tmc .model-content .model-title th.t-one {
+    background: #076564;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 5px 0px;
+    text-align: center;
+    width: 10%;
+}
+#tmc .model-content .model-title th.t-two {
+    background: #097575;
+    padding-left: 10px;
+    color: #f7d131;
+    font-size: 18px;
+    font-weight: 700;
+    vertical-align: middle;
+}
+#tmc .model-content th:nth-child(1){
+    width: 40px;
+    padding:0 2px;
+    text-align: center;
+    font-weight:500;
+}
 .settings-modal .model-content ul li{
     color: #fff;
-    margin: 24px 0;
+    margin-bottom:16px;
     list-style: none;
     position: relative;
+    font-size: 14px;
+}
+.settings-modal .model-content li a:hover,
+.settings-modal .model-content li a{
+    color: #fff;
 }
 .settings-modal .model-content ul li:nth-last-child(1){
     margin-bottom: 0;
 }
+
 .settings-modal .model-content ul li:after{
     position: absolute;
     content: '';
-    width: 10px;
-    height: 10px;
+    width:8px;
+    height: 8px;
     top: 7px;
     left: -20px;
     border-radius: 50%;
     background: #f7d131;
 }
 .settings-modal .model-content ul{
-    padding-left: 46px;
+    padding-left:20px;
 }
 .settings-modal .model-content ul li::marker{
     color: #f7d131;
@@ -1232,6 +1279,7 @@ a {
     text-align: center;
     margin-bottom: 0px;
     text-shadow: 1px 2px #000;
+    text-transform: capitalize;
 }
 
 .cat-box-mian {
@@ -1635,6 +1683,7 @@ body {
     border-radius: 30px;
     border: 2px solid #015855;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 

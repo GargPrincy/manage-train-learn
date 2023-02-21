@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="cat-box-block mb-0">
-              <div class="cat-box-block-inner">
+              <div class="cat-box-block-inner description-tooltip">
                 <h3>Description:</h3>
                 <div class="sub-block1">
                   <ng-template #tipContent>{{slideData.description}}</ng-template>
@@ -206,7 +206,7 @@
               today.
               You have {{downloadCountID}} downloads left in your 24-hour quota."</div>
               <div *ngIf="!socialEmail" class="ineer-popup-content">
-                "{{showGuestUserName}}, Please login with your social media account in order to download your slides."</div>
+                "{{guestUserWhenDownload}}, Please login with your social media account in order to download your slides."</div>
             <div class="ineer-popup-close-btn">
               <button data-bs-dismiss="modal" class="btn">Close</button>
             </div>

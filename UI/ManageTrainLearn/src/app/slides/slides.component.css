@@ -14,3 +14,6 @@
 .pdfViewer .page{
   margin-bottom: 0 !important;
 }
+.description-tooltip{
+  text-transform: inherit;
+}

@@ -1,11 +1,10 @@
-import { Component  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import {Router, ActivatedRoute, NavigationEnd} from '@angular/router';
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
 // import { NgImageSliderModule } from 'ng-image-video-gallery';
 import { Title } from '@angular/platform-browser';
 const FileSaver = require('file-saver');
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
 
 @Component({
   selector: 'app-slides',
@@ -26,6 +25,7 @@ export class SlideComponent {
   page: number = 1;
   totalPages: number = 0;
   public showGuestUserName:any = "";
+  public guestUserWhenDownload:any = "";
   public socialToken:any = "";
   public socialEmail:any = "";
   isLoaded: boolean = false;
@@ -38,28 +38,33 @@ export class SlideComponent {
     margin:10,
     loop:false,      
     dots:false,    
-    autoWidth:false,    
+    autoWidth:false,  
+    navSpeed:80,  
     autoHeight:false,       
     slideTransition:'linear',
     navText:["   <span class='slide-left'> <img src='assets/images/arrow-left.png' width='59px' alt='arrow-left arrow-a'>  </span>","<span class='slide-right'><img src='assets/images/arrow-right.png' width='59px' alt='arrow-right arrow-a'> </span>"],
     animateOut: 'fadeOut', 
     animateIn: 'fadeIn',
-    navSpeed:100,
     responsive: {
       0: {
-        items:2 
+        items:2,
+        slideBy:2,
       },
       420: {
-        items:3 
+        items:3,
+        slideBy:3,
       },
       575: {
-        items:5
+        items:5,
+        slideBy:5,
       },
       992: {
-        items:6
+        items:6,
+        slideBy:6,
       },
       1200: {
         items:8,
+        slideBy:8,
         nav:true
       }
     },
@@ -92,7 +97,10 @@ export class SlideComponent {
         if(this.showGuestUserName == "" || this.showGuestUserName == null) {
           this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
         }
-        console.log(params,userId,id);
+        console.log(params,userId,id);  
+        if(this.guestUserWhenDownload == "" || this.guestUserWhenDownload == null) {
+          this.guestUserWhenDownload = localStorage.getItem("guestUserDownload");
+        }
 
         let slideIds:number = parseInt(userId)
         this.getData(slideIds);
@@ -127,9 +135,11 @@ export class SlideComponent {
      
       // if(this.showGuestUserName == "" || this.showGuestUserName == null) {
         this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+        this.guestUserWhenDownload = localStorage.getItem("guestUserDownload");
       // }
       // if(this.socialEmail == "" || this.socialEmail == null) {
         this.socialEmail = localStorage.getItem('socialEmail');
+
       // } 
       //We loading the player script on after view is loaded
     }

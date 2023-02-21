@@ -8,6 +8,8 @@ declare var $: any;
 import { SocialAuthService , SocialUser ,FacebookLoginProvider, GoogleLoginProvider, GoogleInitOptions } from  '@abacritt/angularx-social-login';
 // import { ElementRef } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -44,7 +46,6 @@ export class HeaderComponent {
     private _homeService: HomeService,
     private _slideListingService: SlideListingsService,
     private authService: SocialAuthService
-
   ) {
     this.homeAllData = [];
     this.socialAllData = [];
@@ -59,7 +60,7 @@ export class HeaderComponent {
         ],
       ],
     });
-    
+
   }
 
   checkoutForm = this.formBuilder.group({
@@ -203,14 +204,14 @@ export class HeaderComponent {
         }
       });
     } /**/  
-    if (localStorage.getItem("guestUserNameMTL") === null) {
+    if (this.showGuestUserName === null) {
       //...
       // localStorage.setItem('guestUserName', "GuestUser");
       this.showModelPopup=true;
       this.openModelData();
     }
 
-    this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+    // this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
     this.openModelData();
   
   }
@@ -219,10 +220,12 @@ export class HeaderComponent {
     // let emiteddd = this.socialTokens.emit(this.socialToken);
     // console.log(emiteddd, 'emiteddd-social')
 
-    this.showGuestUserName = localStorage.getItem("guestUserNameMTL");      
-    console.log(this.socialToken, 'token-social')
-    if (localStorage.getItem("guestUserNameMTL") === null) {
+    // this.showGuestUserName = localStorage.getItem("guestUserNameMTL");      
+    // console.log(this.socialToken, 'token-social')
+    if (this.showGuestUserName === null) {
       //...
+      console.log('isLog-name');
+      
       // localStorage.setItem('guestUserName', "GuestUser");
       this.showModelPopup=true;
       this.openModelData();
@@ -236,30 +239,26 @@ export class HeaderComponent {
     if(form.valid){
       if(form.value.name  == "" || form.value.name  == null){
         // localStorage.setItem('guestUserName', "GuestUser" );
-        this.showGuestUserName = localStorage.getItem("guestUserNameMTL");      
+        this.showGuestUserName =  form.value.name.trim();
+        // this.globalfromGlobals.showGuestUserName = this.showGuestUserName;      
       }else{
-        localStorage.setItem('guestUserNameMTL',  form.value.name.trim());
-        this.showGuestUserName = localStorage.getItem("guestUserNameMTL");      
+        // console.log('form-triem-241', form.value.name.trim())
+        // localStorage.setItem('guestUserNameMTL',  form.value.name.trim());
+        this.showGuestUserName =  form.value.name.trim();
+        localStorage.setItem('guestUserDownload',  form.value.name.trim()); 
+        // console.log('form-triem-241', this.showGuestUserName)
+             
+        // this.globalfromGlobals.showGuestUserName = this.showGuestUserName;
+        // console.log('hfhfh-256', this.globalfromGlobals.showGuestUserName)
+  
+
       }
       this.hidePopup();
       this.onReset();
     }
   }
 
-  // signInWithGoogle(): void {
 
-  //   const googleLoginOptions: GoogleInitOptions = {
-  //     oneTapEnabled: false, // default is true
-  //     scopes: 'https://www.googleapis.com/auth/calendar.readonly'
-  //   }; 
-  //   console.log('social')
-
-  //   // console.log(this.googleBtn, 'fgoglel-btron');
-  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID, googleLoginOptions).then(data => {
-  //     console.log('auth-gmail');
-  //     console.log('auth-gmail', data);
-  //   });
-  // }
   postGoogleData(user:any){
     console.log('fhjkh-user', user)
     
@@ -272,9 +271,12 @@ export class HeaderComponent {
       console.log("post social",respon)
       this.socialAllData = respon;
       localStorage.setItem("tokensocial", this.socialAllData.token);
-      localStorage.setItem('guestUserNameMTL', this.socialAllData.name);
+      this.showGuestUserName = localStorage.setItem('guestUserNameMTL', this.socialAllData.name);
       localStorage.setItem('socialEmail', this.socialAllData.email);
       // localStorage.setItem('socialId', this.socialAllData.id);
+      this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+      // this.globalfromGlobals.showGuestUserName = this.showGuestUserName;
+      // console.log('hkhkhk', this.globalfromGlobals.showGuestUserName)
   }
 );
 if(this.isLoggedin == true) {
@@ -283,60 +285,25 @@ if(this.isLoggedin == true) {
 }
   }
 
-  // signInWithFB(): void {
-  //   const fbLoginOptions = {
-  //     enable_profile_selector: true,
-  //     return_scopes: true,
-  //     scope: 'email,public_profile',
-  //     auth_type: 'rerequest'
-  //   };
-
-  //   let facebookProvider = FacebookLoginProvider.PROVIDER_ID;
-
-  //     this.authService.signIn(facebookProvider).then(data => {
-  //       console.log(data, 'data');
-
-  //        var socialObj = { 
-  //         "name" : data.response.name, 
-  //         "email" : data.response.email ? data.response.email : data.response.id + "@gmail",
-  //         "id"  : data.response.id 
-  //       }
-
-  //       console.log(socialObj, 'social-object')
-
-  //       this._homeService.postSocialRecord(socialObj).subscribe(respon => {
-  //             console.log("post social",respon)
-  //             this.socialAllData = respon;
-  //             localStorage.setItem("tokensocial", this.socialAllData.token);
-  //             localStorage.setItem('guestUserNameMTL', this.socialAllData.name);
-  //             localStorage.setItem('socialEmail', this.socialAllData.email);
-  //             // localStorage.setItem('socialId', this.socialAllData.id);
-  //         }
-  //       );
-
-  //       console.log("princygargarag")
-  //       if(this.isLoggedin == true) {
-  //         // console.log('naigate', this.user)
-  //         this.router.navigate(['/']);
-  //       }
-  //     });
-  // }
-
   signOut(): void {
+    console.log('signout-280')
     localStorage.removeItem("tokensocial");
-    localStorage.removeItem('guestUserNameMTL');
+    this.showGuestUserName = localStorage.removeItem('guestUserNameMTL');
+    console.log('fjklklklklklklklklklklklkl', this.showGuestUserName)
+    // this.showGuestUserName = '';
     localStorage.removeItem('socialEmail');
-    // localStorage.removeItem('socialId');
+    if (this.showGuestUserName == null || this.showGuestUserName == '') {
+      //...
+      console.log('isLoggedinbbb-name-2889');
+      
+      // localStorage.setItem('guestUserName', "GuestUser");
+      this.showModelPopup=true;
+      this.openModelData();
+    }
     this.authService.signOut();
+    
   }
 
-  // refreshToken(): void {console.log('refresssshhhhhhhhhhhh')
-  //   this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
-  // }
-
-  // getAccessToken(): void {
-  //   this.authService.getAccessToken(GoogleLoginProvider.PROVIDER_ID).then(accessToken => this.accessToken = accessToken);
-  // }
 
   onReset() {
     this.submitted = false;
@@ -347,7 +314,7 @@ if(this.isLoggedin == true) {
   }
 
   openModelData() { 
-    this.showGuestUserName = localStorage.getItem("guestUserNameMTL");  
+    // this.showGuestUserName = localStorage.getItem("guestUserNameMTL");  
     console.log(this.showGuestUserName, 'guest-namee')    
     if(this.showGuestUserName == "" || this.showGuestUserName == null) {
       console.log("aya h");
