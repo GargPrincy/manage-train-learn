@@ -37,6 +37,8 @@ export class HeaderComponent {
   public user!: SocialUser;
   socialUser!: SocialUser;
   public isLoggedin: boolean = false;
+  public guestUserWhenDownload:any = "";
+
   private accessToken = '';
 
   constructor(
@@ -141,6 +143,10 @@ export class HeaderComponent {
   }
  
   ngOnInit() {
+
+    this.socialToken = localStorage.getItem('tokensocial');
+    console.log(this.socialToken, 'token-social')
+
     this.router.events.subscribe((event:Event) => {
       if (event instanceof RoutesRecognized) {
 
@@ -183,28 +189,37 @@ export class HeaderComponent {
     }
   });
     this.getData();
-    this.socialToken = localStorage.getItem('tokensocial');
-    console.log(this.socialToken, 'token-social')
+    
+    // if (this.socialToken == null && localStorage.getItem("socialEmail") === null) {
+    //   this.isLoggedin == false;
+    // }
 
-    if (this.socialToken == null && localStorage.getItem("socialEmail") === null) {
-      this.isLoggedin == false;
-    }
-  if(!this.isLoggedin && this.socialToken == null) {
+    if(localStorage.getItem("socialEmail") != '' || localStorage.getItem("socialEmail") != null){
+      console.log('ngafterviewinit---->>ifffffffffffffffff');
+        this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+      }
+
+    // if(localStorage.getItem("socialEmail") == '' || localStorage.getItem("socialEmail") == null){
+    //   console.log('ngafterviewinit---->>iffff-null--->>');
+    //   this.showGuestUserName = localStorage.getItem("guestUserDownload");
+    // }
+
+  // if(!this.isLoggedin && this.socialToken == null) {
 
   console.log('userssss-loggedinn')
-    this.authService.authState.subscribe((user) => {
+  /*  this.authService.authState.subscribe((user) => {
       console.log('userssss')
         this.user = user;
         
         this.isLoggedin = (user != null);
         console.log(this.user, 'user-name');
         console.log( this.isLoggedin , 'isLoggedin -name');
-        if(user != null){
-          this.postGoogleData(this.user);
-        }
+        // if(user != null){
+        //   this.postGoogleData(this.user);
+        // }
       });
-    } /**/  
-    if (this.showGuestUserName === null) {
+    // } */ /**/  
+    if ((this.showGuestUserName == '' || this.showGuestUserName == null) && localStorage.getItem("socialEmail") === null) {
       //...
       // localStorage.setItem('guestUserName', "GuestUser");
       this.showModelPopup=true;
@@ -212,17 +227,22 @@ export class HeaderComponent {
     }
 
     // this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
-    this.openModelData();
+    console.log(this.showGuestUserName, 'show-user')
+    // this.openModelData();
   
   }
   ngAfterViewChecked(){
     this.socialToken = localStorage.getItem('tokensocial');
-    // let emiteddd = this.socialTokens.emit(this.socialToken);
-    // console.log(emiteddd, 'emiteddd-social')
 
     // this.showGuestUserName = localStorage.getItem("guestUserNameMTL");      
     // console.log(this.socialToken, 'token-social')
-    if (this.showGuestUserName === null) {
+    // if(localStorage.getItem("socialEmail") != '' || localStorage.getItem("socialEmail") != null){
+    //   console.log('ngafterviewinit---->>ifffffffffffffffff');
+
+    //     this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+    //   }
+
+    if ((this.showGuestUserName == ' ' || this.showGuestUserName == null) && localStorage.getItem("socialEmail") === null) {
       //...
       console.log('isLog-name');
       
@@ -230,7 +250,20 @@ export class HeaderComponent {
       this.showModelPopup=true;
       this.openModelData();
     }
+
+    if(localStorage.getItem("socialEmail") != null){
+      console.log('ngafterviewinit---->>ifffffffffffffffff');
+        this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+      }
   }
+
+
+  // ngAfterViewInit(){
+  //   if(localStorage.getItem("socialEmail") != '' || localStorage.getItem("socialEmail") != null){
+  //   console.log('ngafterviewinit---->>ifffffffffffffffff');
+  //     this.showGuestUserName = localStorage.getItem("guestUserNameMTL");
+  //   }
+  // }
 
 
   public userFormSubmit(form: FormGroup) {
@@ -247,9 +280,6 @@ export class HeaderComponent {
         this.showGuestUserName =  form.value.name.trim();
         localStorage.setItem('guestUserDownload',  form.value.name.trim()); 
         // console.log('form-triem-241', this.showGuestUserName)
-             
-        // this.globalfromGlobals.showGuestUserName = this.showGuestUserName;
-        // console.log('hfhfh-256', this.globalfromGlobals.showGuestUserName)
   
 
       }
@@ -279,10 +309,49 @@ export class HeaderComponent {
       // console.log('hkhkhk', this.globalfromGlobals.showGuestUserName)
   }
 );
-if(this.isLoggedin == true) {
-  // console.log('naigate', this.user)
-  this.router.navigate(['/']);
-}
+// if(this.isLoggedin == true) {
+//   // console.log('naigate', this.user)
+//   this.router.navigate(['/']);
+// }
+  }
+
+    signInWithFB(): void {
+    const fbLoginOptions = {
+      enable_profile_selector: true,
+      return_scopes: true,
+      scope: 'email,public_profile',
+      auth_type: 'rerequest'
+    };
+
+    let facebookProvider = FacebookLoginProvider.PROVIDER_ID;
+
+      this.authService.signIn(facebookProvider).then(data => {
+        console.log(data, 'data');
+
+         var socialObj = { 
+          "name" : data.response.name, 
+          "email" : data.response.email ? data.response.email : data.response.id + "@gmail",
+          "id"  : data.response.id 
+        }
+
+        console.log(socialObj, 'social-object')
+
+        this._homeService.postSocialRecord(socialObj).subscribe(respon => {
+              console.log("post social",respon)
+              this.socialAllData = respon;
+              localStorage.setItem("tokensocial", this.socialAllData.token);
+              localStorage.setItem('guestUserNameMTL', this.socialAllData.name);
+              localStorage.setItem('socialEmail', this.socialAllData.email);
+              // localStorage.setItem('socialId', this.socialAllData.id);
+          }
+        );
+
+        console.log("princygargarag")
+        // if(this.isLoggedin == true) {
+        //   // console.log('naigate', this.user)
+        //   this.router.navigate(['/']);
+        // }
+      });
   }
 
   signOut(): void {

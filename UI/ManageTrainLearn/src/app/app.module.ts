@@ -22,6 +22,8 @@ import { SlideAllComponent } from './slide-all/slide-all.component';
 import { SlideListingsComponent } from './slide-listings/slide-listings.component';
 import { SlidesModule } from './slides/slides.module';
 import { CategoryListingsComponent } from './category-listings/category-listings.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
+import { TopicListingComponent } from './topic-listings/topic-listings.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { CategoryListingsComponent } from './category-listings/category-listings
     SocialLoginComponent,
     SlideAllComponent,
     SlideListingsComponent,
-    CategoryListingsComponent
+    CategoryListingsComponent,
+    CategoryViewComponent,
+    TopicListingComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { SlideComponent } from './slides.component';
 
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -18,8 +19,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     NgbTooltipModule,
     PdfViewerModule,
     SlidesRoutingModule,
-    CarouselModule
- 
+    CarouselModule,
+    SocialLoginModule
   ]
 })
 export class SlidesModule { }

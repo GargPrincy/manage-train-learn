@@ -3,14 +3,13 @@
 
   <div class="container">
     <div class="row justify-content-between align-items-center">
-
-      <div *ngIf="topicKeyword && categoriesAllData.data.length && showData ">
+      <div *ngIf="categoriesAllData.data.length && showData ">
         <h2 class="top-cat">{{categoriesAllData.data[0].category}}</h2>
       </div>
 
 
       <div class="col-lg-auto col-md-7 col-auto">
-        <h2 class="category-topic m-0">{{showKeyword | titlecase}}</h2>
+        <h2 class="category-topic m-0">{{categoriesAllData.data[0].topic | titlecase}}</h2>
       </div>
 
       <div class="col-lg-auto col-md-5 col-auto">
@@ -25,7 +24,7 @@
         </div>
       </form>
         <div class="border-box d-inline-block ms-3" *ngIf="categoriesAllData.data.length && showData ">
-          <a target="_self" style="cursor: pointer;" (click)="slideAll()">View All ({{totalCount}})</a>
+          <a target="_self" style="cursor: pointer;" routerLink="/category-view/{{categoriesAllData.data[0].topic_id}}">View All ({{categoriesAllData.total.total_slides}})</a>
         </div>
 
 

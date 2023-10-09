@@ -21,3 +21,26 @@ asl-google-signin-button{
     line-height: 46px;
     display: block;
 }
+
+.right-user-id.top-user-btn{ display: flex;}
+.btn-logout{    margin-left: 18px;
+    margin-top: 7px;    width: 48px;
+    height: 48px;}
+
+    .user_name{ width: 230px;}
+
+    .top-logout{
+        position: relative;
+
+    }
+    .top-logout .toltip2 {
+        position: absolute;
+        top: -14px;
+        color: #fff;
+        margin-left: 21px;
+        font-size: 12px;
+        display: none;
+    }
+    .top-logout:hover .toltip2 {
+          display: block;
+    }

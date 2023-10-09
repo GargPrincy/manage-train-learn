@@ -17,3 +17,37 @@
 .description-tooltip{
   text-transform: inherit;
 }
+.btn-social-media-box .gmail-login{
+  font-size: 18px;
+  text-decoration: none;
+  border: 2px solid #EA4335;
+  background: #BB001B;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 500;
+  height: 50px;
+  box-shadow: inset 0 0 4px #0006;
+  width: 50px;
+  text-align: center;
+  line-height: 46px;
+  display: block;
+}
+
+.btn-social-media-box  {
+  width: 130px;
+  margin: 0px auto;
+  float: none;
+  text-align: center;
+  display: flex;
+}
+.face-book{ width: 100%; padding: 30px 0px;}
+
+.btn-social-media-box button{ margin-right: 15px;}
+
+.btn-social-media-btn {
+  width: 43px;
+  height: 43px;
+
+}
+
+#raund-modalsse .model-content{ overflow: hidden;}

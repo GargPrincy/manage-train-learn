@@ -162,5 +162,25 @@ export class SlideListingsService {
 //         })
 // }
 
+public getCategoryView(topicIdd:number):Observable<HomeList[]> {
+
+  console.log(topicIdd,"dfsdf");
+  return this._httpService.get<HomeList[]>(API.categories.getAllCategoryListingViewAll.replace('{topicId}', topicIdd.toString()))
+      .pipe(
+          map( r => {
+            console.log("in services",r);
+            if (r.body?.status){
+              // this.categoryviewData =  this.categoryeData;
+               this.categoryeData.data = r?.body.data ?? [];
+               this.categoryeData.total = r?.body ?? [];
+            }
+            console.log(this.categoryeData.data, 'princy-service se data');
+            console.log(this.categoryeData.total, 'princy-service se total');
+            return this.categoryeData;
+
+          })
+      );
+}
+
 
 }

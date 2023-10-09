@@ -1,0 +1,185 @@
+<section class="middle-part video-list">
+  <span class="loader" *ngIf="loading"></span>
+
+
+  <div class="container">
+    <div class="row">
+          <div class="row justify-content-between align-items-center">
+
+            <div class="col-auto">
+              <h2 class="category-topic m-0">
+                {{categoriesAllData.data[0].topic | titlecase}}
+              </h2>
+            </div>
+  
+  
+            <div class="col">
+              <div >
+                <div class="row justify-content-end mb-3">
+               
+                  <div class="col-auto">
+                    <form [formGroup]="form">
+                      <div class="border-box border-border">
+                        <select
+                          name="languages"
+                          id="lang"
+                          (change)="onChanges($event)"
+                        >
+                          <option value="">Sort</option>
+                          <option value="viewss">
+                            Sort (by downloads)
+                          </option>
+                          <option value="atoz">
+                            Sort (by A-Z title)
+                          </option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+    
+            </div>
+          </div>
+    </div>
+    <!-- <button id="show" data-theme="b">
+        Default loader
+      </button> -->
+    <div class="row" *ngIf="categoriesAllData.data.length && showData">
+
+      <div class="col-md-12">
+        <div class="product-video-box pt-3" id="galleries-list">
+          <div class="col-md-12" *ngIf="categoriesAllData.data.length && showData">
+            <div class="wrapper">
+
+              <div class="row">
+
+                <div class="col-xl-3 col-lg-4 col-md-6" *ngFor="let slide of categoriesAllData.data" style="padding-bottom: 30px;">
+                  <a href="" routerLink="/slide/{{slide.id}}">
+                    <div class="thumbnail-box"> <img style="object-fit:fill;" src="{{slide.thumbnail}}" height="250px"
+                        width="100%" alt="product-img">
+                    </div>
+                    <div class="thumbnail-title"> {{slide.title}}</div>
+                  </a>
+                  <!-- <div class="sub-title-1 text-white"> {{slide.producer | titlecase}}</div> -->
+                  <div class="row justify-content-between">
+                    <div class="col-auto">
+                      <div class="sub-title-1">{{slide.slide_count}} slides</div>
+                    </div>
+                    <div class="col-auto">
+                      <div class="sub-title-2">{{slide.download_count}} downloads</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="categoriesAllData.data.length == 0 && !loading">
+          <h3 class="error-msg">No matching records found</h3>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center">
+      <button *ngIf="showMore" class="btn btn-primary btn-blue" (click)="showMoreItems()">
+        Show More
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .owl-nav button {
+    position: absolute;
+    top: 50%;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .owl-nav button.owl-prev {
+    left: 0;
+  }
+
+  .owl-nav button.owl-next {
+    right: 0;
+  }
+
+  .owl-dots {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .owl-dots button.owl-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #ccc;
+    margin: 0 3px;
+  }
+
+  .owl-dots button.owl-dot.active {
+    background-color: #000;
+  }
+
+  .owl-dots button.owl-dot:focus {
+    outline: none;
+  }
+
+  .owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.38) !important;
+  }
+
+  .owl-nav span {
+    font-size: 70px;
+    position: relative;
+    top: -5px;
+  }
+
+  .owl-nav button:focus {
+    outline: none;
+  }
+
+  .owl-dots {
+    display: none;
+  }
+
+  .owl-carousel .owl-nav button.owl-next,
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel button.owl-dot {
+    background: inherit !important;
+  }
+
+  .owl-nav .owl-prev span {
+    margin-left: -75px !important;
+    background-image: url(https://course.24livehost.com/mtl_build/assets/images/arrow-left.png);
+    font-size: 1px;
+    width: 59px;
+    height: 121px;
+    float: left;
+  }
+
+
+  .owl-nav .owl-next span {
+    margin-right: -90px !important;
+    background-image: url(https://course.24livehost.com/mtl_build/assets/images/arrow-right.png);
+    font-size: 1px;
+    width: 59px;
+    height: 121px;
+    float: left;
+    margin-left: 15px;
+  }
+
+  .owl-carousel.owl-drag .owl-item .item {
+    padding: 10px;
+  }
+</style>

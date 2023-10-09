@@ -25,6 +25,7 @@ export class CategoryListingsComponent {
   // public showCurrentSlide:any = [];
   public categoriesAllDataCategoryListing:any = [];
   public noData:boolean=false;
+  public urlHolderQueryParams:any;
     customOptions: OwlOptions = {
     autoplay: false,
     rewind: false /* use rewind if you don't want loop */,
@@ -64,6 +65,8 @@ export class CategoryListingsComponent {
           this.loading =true;
       
           const cateId:any = this.activatedRoute.snapshot.paramMap.get('categoryId')?.toString();
+      console.log("aprincy1",typeof(cateId));
+
           this.getData(cateId);
         }
 
@@ -86,6 +89,8 @@ export class CategoryListingsComponent {
 
       console.log("....................",params,userId,id);
       let cateIds:number = parseInt(userId)
+
+      console.log(typeof(cateIds), 'princy-ate-list')
       this.getData(cateIds); 
      
       
@@ -127,6 +132,16 @@ export class CategoryListingsComponent {
       });
     
   }
+
+  // routerLink="/category-view/{{slide.topic_id}}" 
+
+  // ViewCategories(idTopic:number){
+  //   console.log(idTopic, 'id-view-topic')
+  //   // console.log(e, 'id-eventtt-topic')
+  //   // this.urlHolderQueryParams = this.categoriesAllDataCategoryListing.topicDetails.topic_id;
+  //   this.router.navigate(['/category-view', this.urlHolderQueryParams]);
+  // }
+
   showTopic(id:number){
     console.log(id,"ddddd");
     if( this.categoriesAllDataCategoryListing.topicDetails[id]){

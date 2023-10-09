@@ -9,6 +9,8 @@ import { SocialLoginComponent } from './social-login/social-login.component';
 import { SlideAllComponent } from './slide-all/slide-all.component';
 import { SlideComponent } from './slides/slides.component';
 import { CategoryListingsComponent } from './category-listings/category-listings.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
+import { TopicListingComponent } from './topic-listings/topic-listings.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,16 @@ const routes: Routes = [
   },
   { path: 'categories', component: CategoryComponent },
   { path: 'category-listing/:categoryId', component: CategoryListingsComponent },
+  {
+    path: "category-view/:topicId", component: CategoryViewComponent 
+  },
+  {
+    path: "category-view", component: CategoryViewComponent 
+  },
+  {
+    path: "topic-listings/:categoryId/:topicId",
+    component: TopicListingComponent 
+  },
   
   {
     path: "slide-listings/:slideSearchKey",

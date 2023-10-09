@@ -1,8 +1,8 @@
-import { Component,NgZone } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SlideListingsService } from 'src/services/slide-listings/slide-listings.service';
+import { CategoriesService } from 'src/services/categories/categories.service';
 import {Router, ActivatedRoute, NavigationEnd,Event, NavigationStart, NavigationError} from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { FormGroup, FormControl} from '@angular/forms';
 
@@ -34,10 +34,9 @@ export class SlideAllComponent {
 
   constructor(    
     private _slideListingService: SlideListingsService,
+    private _categoryService: CategoriesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private zone:NgZone,
-    private readonly http: HttpClient,
     private titleService: Title
     ) {
     
@@ -176,8 +175,8 @@ export class SlideAllComponent {
           this.titleService.setTitle(this.showKeyword);
 
         }     
-
-      } 
+      
+     }
     });
    
   
@@ -253,7 +252,7 @@ export class SlideAllComponent {
 
   private getTopSlide() {
    
-    this._slideListingService.getTopSlideRecordAll().subscribe(
+    this._slideListingService.getTopSlideRecord().subscribe(
       response => {
             //this.categoriesAllData.data = [];
 
@@ -274,6 +273,22 @@ export class SlideAllComponent {
     }
     );
   }
+
+  // private getCategoryViews(searchKeyword:any){
+
+  //   this._categoryService.getCategoryView(searchKeyword).subscribe(
+  //     response => {
+  //       console.log(response, 'response-category-view-topic')
+  //           //this.categoriesAllData.data = [];
+
+  //       // if (response.body?.isSuccess) {
+  //         //this.zone.run(() => { // <== added
+   
+         
+  //        // });
+  //   }
+  //   );
+  // }
 
   get f(){
 
