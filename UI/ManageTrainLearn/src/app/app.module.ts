@@ -61,12 +61,13 @@ import { TopicListingComponent } from './topic-listings/topic-listings.component
           {
             id: GoogleLoginProvider.PROVIDER_ID,
           //  provider: new GoogleLoginProvider('308041842089-utsn90t5mu6s442r7j7htpvbdbll5t18.apps.googleusercontent.com')
-           provider: new GoogleLoginProvider('192654719663-97kq740ii1lcbl0buqiv8e51624c28tp.apps.googleusercontent.com')
-            // provider: new GoogleLoginProvider('308041842089-utsn90t5mu6s442r7j7htpvbdbll5t18.apps.googleusercontent.com-1')
+          //  provider: new GoogleLoginProvider('192654719663-97kq740ii1lcbl0buqiv8e51624c28tp.apps.googleusercontent.com')  demo server
+           provider: new GoogleLoginProvider('494132189522-i6f6l1s9vrkjffu9cfoo3f9k6pn01uio.apps.googleusercontent.com')  //live server
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('739091271259555')
+            // provider: new FacebookLoginProvider('739091271259555')  demo server
+            provider: new FacebookLoginProvider('739091271259555')  //live server
           }
         ],
         onError: (err) => {
