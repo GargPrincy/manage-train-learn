@@ -79,7 +79,7 @@
             </button>
           </nav> -->
         <div style="display: none">
-          <input type="text" id="ytbUrl" value="{{slideData.url}}"/>
+          <input type="text" id="ytbUrl" value="{{this.baseUrl}}"/>
           <input type="text" id="embedUrl" value="{{slideEmbed}}"/>
         </div>
       </div>
@@ -121,7 +121,7 @@
               <div class="col-12">
                 <div class="cat-box-right mb-0">
 
-                  <a href="" (click)="shareVideoCopytext(slideData.url)" data-bs-toggle="modal"
+                  <a href="" (click)="shareVideoCopytext(this.baseUrl)" data-bs-toggle="modal"
                     data-bs-target="#raund-modalss">
                     <img src="assets/images/share-btn.png" alt="" />
                     <div class="right-btnn">Share PowerPoint</div>

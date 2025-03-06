@@ -10,7 +10,7 @@ import { SlideComponent } from './slides.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SocialLoginModule } from '@abacritt/angularx-social-login';
-
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [SlideComponent],
@@ -21,6 +21,8 @@ import { SocialLoginModule } from '@abacritt/angularx-social-login';
     SlidesRoutingModule,
     CarouselModule,
     SocialLoginModule
-  ]
+  ],
+  providers: [
+      { provide: APP_BASE_HREF, useValue: '/' }]
 })
 export class SlidesModule { }

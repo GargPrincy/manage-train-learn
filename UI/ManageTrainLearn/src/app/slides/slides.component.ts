@@ -8,7 +8,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from 'src/services/home/home.service';
 import { SocialAuthService , SocialUser ,FacebookLoginProvider, GoogleLoginProvider, GoogleInitOptions } from  '@abacritt/angularx-social-login';
 declare var $: any;
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-slides',
@@ -45,6 +45,7 @@ export class SlideComponent {
   public socialAllData:any = [];
   lastItem:any;
   public modalShoiw:boolean=false;
+   public baseUrl: any;
 
   customOptionsthumb: OwlOptions = {
     autoplay: false,
@@ -113,10 +114,10 @@ export class SlideComponent {
       private titleService: Title,
       private router: Router,
       private _homeService: HomeService,
-      private authService: SocialAuthService, 
+      private authService: SocialAuthService
     ) {
       this.imageObject = [];
-
+      this.baseUrl = window.location.href;
     }
 
     ngOnInit() {
